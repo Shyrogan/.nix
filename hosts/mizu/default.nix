@@ -1,8 +1,9 @@
 { pkgs, ... }: {
   imports = [
+    ./audio.nix
+    ./bluetooth.nix
     ./hardware.nix
     ./kernel.nix
-    ./audio.nix
   ];
 
   networking.hostName = "mizu";
