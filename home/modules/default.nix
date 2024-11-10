@@ -6,6 +6,7 @@
   imports = [
     ./dconf.nix
     ./fonts.nix
+    ./hyprland.nix
     ./niri.nix
     ./nushell.nix
     ./wezterm.nix

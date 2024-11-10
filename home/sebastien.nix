@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: let
-  inherit (inputs) Neve stylix;
+  inherit (inputs) neve stylix;
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -20,7 +20,7 @@ in {
 
     packages = with pkgs; [
       # Neovim
-      Neve.packages.${pkgs.system}.default 
+      neve.packages.${pkgs.system}.default 
 
       graalvm-ce
 
@@ -34,10 +34,11 @@ in {
   programs = {
     firefox.enable = true;
     wezterm.enable = true;
-    niri.enable = true;
+    #niri.enable = true;
     nushell.enable = true;
     waybar.enable = true;
     fuzzel.enable = true;
   };
+  wayland.windowManager.hyprland.enable = true;
 }
 

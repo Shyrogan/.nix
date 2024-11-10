@@ -11,9 +11,10 @@
 
     # Desktop
     niri.url = "github:sodiboo/niri-flake";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     # Applications
-    Neve.url = "github:redyf/Neve";
+    neve.url = "github:redyf/Neve";
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
@@ -41,7 +42,7 @@
               ./hosts/mizu
 
               # Desktop environment
-              ./hosts/common/desktops/niri.nix
+              ./hosts/common/desktops/hyprland.nix
             ];
           };
         };
