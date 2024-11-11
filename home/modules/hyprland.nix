@@ -64,6 +64,11 @@ in {
       general = {
         layout = "scroller";
       };
+
+      misc = {
+        disable_splash_rendering = true;
+        disable_hyprland_logo = true;
+      };
     };
   };
   services.hyprpaper = mkIf cfg.enable {
