@@ -36,7 +36,7 @@ in {
     wezterm.enable = true;
     #niri.enable = true;
     nushell.enable = true;
-    waybar.enable = true;
+    swts.desktop.enable = true;
     fuzzel.enable = true;
   };
   wayland.windowManager.hyprland.enable = true;

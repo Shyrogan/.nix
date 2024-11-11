@@ -9,6 +9,7 @@
     ./hyprland.nix
     ./niri.nix
     ./nushell.nix
+    ./swts.nix
     ./wezterm.nix
   ];
 }
