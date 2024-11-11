@@ -50,7 +50,7 @@ in {
       };
 
       decoration = {
-        rounding = 2;
+        rounding = 4;
       };
       
       monitor = [
