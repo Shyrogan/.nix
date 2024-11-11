@@ -54,7 +54,9 @@ in {
       };
       
       monitor = [
-        "eDP-1,highres,auto,2"
+        "eDP-1,highres,auto-left,1.6"
+        "HDMI-A-1,preferred,auto,1.333333"
+        "DP-1,preferred,auto-right,1.0,transform,1"
       ];
       
       xwayland = {
