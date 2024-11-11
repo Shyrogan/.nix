@@ -1,7 +1,7 @@
 { inputs, config, lib, pkgs, ... }: with lib;
 let
   cfg = config.wayland.windowManager.hyprland;
-  inherit (inputs) hyprland;
+  inherit (inputs) hyprland hyprscroller;
   hyprPkgs = hyprland.packages.${pkgs.system};
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
@@ -10,6 +10,7 @@ in {
     xwayland.enable = true;
 
     plugins = [
+      hyprscroller.packages.${pkgs.system}.default
     ];
 
     settings = let
@@ -25,6 +26,8 @@ in {
         "$mod, Return, exec, wezterm"
         "$mod, X, killactive"
         "$mod, Space, exec, fuzzel"
+        "$mod, F, scroller:fitsize, active"
+        "Shift+$mod, F, fullscreen"
       ] ++
         # For each workspaces, creates bindings
         foldl' (acc: w: acc ++ [
@@ -36,6 +39,11 @@ in {
           "$mod, ${builtins.elemAt m 0}, movefocus, ${builtins.elemAt m 1}"
           "Shift+$mod, ${builtins.elemAt m 0}, movewindow, ${builtins.elemAt m 1}"
         ]) [] motions;
+
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
 
       input = {
         kb_layout = "fr";
@@ -51,6 +59,10 @@ in {
       
       xwayland = {
         force_zero_scaling = true;
+      };
+
+      general = {
+        layout = "scroller";
       };
     };
   };
