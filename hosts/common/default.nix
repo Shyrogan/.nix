@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./nix.nix
+    ./wifi.nix
   ];
 
   # Some of those packages are kinda required for Nix to work properly.

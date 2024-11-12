@@ -7,7 +7,7 @@
   ];
 
   networking.hostName = "mizu";
-  networking.networkmanager.enable = true;
+  #networking.networkmanager.enable = true;
 
   # Users for my laptop
   users = {

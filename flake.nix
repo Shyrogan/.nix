@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager";
+    agenix.url = "github:ryantm/agenix";
 
     # Stylix
     stylix.url = "github:danth/stylix";
@@ -38,6 +39,7 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
         inherit (self) outputs;
+        inherit (inputs) agenix;
       in {
         nixosConfigurations = {
           mizu = nixpkgs.lib.nixosSystem {
@@ -46,6 +48,7 @@
               inherit inputs outputs;
             };
             modules = [
+              agenix.nixosModules.default
               # Common and host-specific config
               ./hosts/common
               ./hosts/mizu
