@@ -8,7 +8,8 @@
     agenix.url = "github:ryantm/agenix";
 
     # Stylix
-    stylix.url = "github:danth/stylix";
+    # TODO: go back to normal stylix once this is merged.
+    stylix.url = "github:laycookie/stylix";
 
     # Desktop
     niri.url = "github:sodiboo/niri-flake";
@@ -52,14 +53,12 @@
               # Common and host-specific config
               ./hosts/common
               ./hosts/mizu
-
-              # Desktop environment
-              ./hosts/common/desktops/hyprland.nix
             ];
           };
         };
         homeConfigurations = {
           home-manager.backupFileExtension = "backup";
+          home-manager.useUserPackages = true;
           sebastien = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = {

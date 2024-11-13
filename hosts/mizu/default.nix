@@ -4,11 +4,12 @@
     ./bluetooth.nix
     ./hardware.nix
     ./kernel.nix
-    ./powerManagement.nix
   ];
 
   networking.hostName = "mizu";
   #networking.networkmanager.enable = true;
+
+  programs.hyprland.enable = true;
 
   # Users for my laptop
   users = {

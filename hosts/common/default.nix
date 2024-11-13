@@ -2,6 +2,7 @@
   imports = [
     ./nix.nix
     ./wifi.nix
+    ./desktops/hyprland.nix
   ];
 
   # Some of those packages are kinda required for Nix to work properly.
