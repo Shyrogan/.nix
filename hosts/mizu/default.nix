@@ -4,6 +4,7 @@
     ./bluetooth.nix
     ./hardware.nix
     ./kernel.nix
+    ./powerManagement.nix
   ];
 
   networking.hostName = "mizu";
