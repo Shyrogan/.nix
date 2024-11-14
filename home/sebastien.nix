@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: let
-  inherit (inputs) neve stylix;
+  inherit (inputs) stylix;
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -25,9 +25,6 @@ in {
     homeDirectory = "/home/sebastien";
 
     packages = with pkgs; [
-      # Neovim
-      neve.packages.${pkgs.system}.default 
-
       graalvm-ce
 
       jetbrains.idea-ultimate
@@ -43,10 +40,10 @@ in {
   programs = {
     firefox.enable = true;
     wezterm.enable = true;
-    #niri.enable = true;
     nushell.enable = true;
     swts.desktop.enable = true;
     fuzzel.enable = true;
+    nixvim.enable = true;
   };
   xdg.mime = {
     enable = true;

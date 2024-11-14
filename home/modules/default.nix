@@ -8,6 +8,7 @@
     ./fonts.nix
     ./hyprland.nix
     ./niri.nix
+    ./nixvim.nix
     ./nushell.nix
     ./swts.nix
     ./wezterm.nix

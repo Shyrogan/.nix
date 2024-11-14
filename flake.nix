@@ -25,6 +25,7 @@
     swts.url = "github:Shyrogan/swts";
 
     # Applications
+    nixvim.url = "github:nix-community/nixvim";
     neve.url = "github:redyf/Neve";
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
