@@ -12,6 +12,12 @@ in {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/irblack.yaml";
     image = ../assets/wallpaper.png;
+    iconTheme = rec {
+      enable = true;
+      package = pkgs.morewaita-icon-theme;
+      light = "MoreWaita";
+      dark = light;
+    };
   };
 
   home = {
@@ -26,6 +32,9 @@ in {
 
       jetbrains.idea-ultimate
       vesktop
+
+      gtk3
+      gdk-pixbuf
     ];
 
     stateVersion = "24.05";
@@ -38,6 +47,9 @@ in {
     nushell.enable = true;
     swts.desktop.enable = true;
     fuzzel.enable = true;
+  };
+  xdg.mime = {
+    enable = true;
   };
   wayland.windowManager.hyprland.enable = true;
 }

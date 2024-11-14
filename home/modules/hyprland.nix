@@ -80,12 +80,4 @@ in {
   home.sessionVariables = mkIf cfg.enable {
     NIXOS_OZONE_WL = "1";
   };
-  # This solves some icons missing
-  gtk = mkIf cfg.enable {
-    enable = true;
-    iconTheme = {
-      name = "MoreWaita";
-      package = pkgs.morewaita-icon-theme;
-    };
-  };
 }

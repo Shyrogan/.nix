@@ -30,6 +30,7 @@ in {
     environment.systemPackages = with pkgs; [
       adwaita-icon-theme
       morewaita-icon-theme
+      papirus-icon-theme
       nautilus
       loupe
     ];
