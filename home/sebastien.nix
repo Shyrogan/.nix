@@ -1,5 +1,5 @@
-{ inputs, pkgs, ... }: let
-  inherit (inputs) stylix;
+{ inputs, pkgs, lib, ... }: let
+  inherit (inputs) stylix nixvim;
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -8,6 +8,7 @@ in {
     ./modules
   ];
 
+  # Styling
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/irblack.yaml";
@@ -20,6 +21,7 @@ in {
     };
   };
 
+  # User info
   home = {
     username = "sebastien";
     homeDirectory = "/home/sebastien";
@@ -37,6 +39,7 @@ in {
     stateVersion = "24.05";
   };
 
+  # Programs
   programs = {
     firefox.enable = true;
     wezterm.enable = true;
@@ -44,6 +47,7 @@ in {
     swts.desktop.enable = true;
     fuzzel.enable = true;
     nixvim.enable = true;
+    zathura.enable = true;
   };
   xdg.mime = {
     enable = true;

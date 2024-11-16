@@ -1,13 +1,23 @@
-{ lib, config, inputs, ... }: with lib;
+{ lib, inputs, ... }: with lib;
 let
   inherit (inputs) neve nixvim;
-  cfg = config.programs.nixvim;
 in {
   imports = [
     nixvim.homeManagerModules.nixvim
   ];
 
-  programs.nixvim = mkIf cfg.enable {
+  programs.nixvim = {
+    enable = true;
     imports = [ neve.nixvimModule ];
+    colorschemes = {
+      base16 = {
+        enable = mkForce true;
+        colorscheme = "irblack";
+      };
+    };
+    extraConfigLuaPost = ''
+      vim.cmd [[colorscheme base16-irblack]]
+    '';
+    plugins.copilot-lua.enable = mkForce false;
   };
 }
