@@ -18,6 +18,18 @@ in {
     extraConfigLuaPost = ''
       vim.cmd [[colorscheme base16-irblack]]
     '';
-    plugins.copilot-lua.enable = mkForce false;
+    plugins = {
+      copilot-lua.enable = mkForce false;
+      typst-vim = {
+        enable = true;
+        settings = {
+          pdf_viewer = "zathura";
+        };
+        keymaps = {
+          watch = "cw";
+        };
+      };
+      lsp.servers.typst_lsp.enable = true;
+    };
   };
 }

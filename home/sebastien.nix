@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, ... }: let
+{ inputs, pkgs, ... }: let
   inherit (inputs) stylix nixvim;
 in {
   nixpkgs.config.allowUnfree = true;
