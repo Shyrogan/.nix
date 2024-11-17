@@ -29,16 +29,21 @@ in {
         "$mod, F, scroller:fitsize, active"
         "Shift+$mod, F, fullscreen"
       ] ++
-        # For each workspaces, creates bindings
-        foldl' (acc: w: acc ++ [
-          "$mod, ${builtins.elemAt w 0}, workspace, ${toString (builtins.elemAt w 1)}"
-          "Shift+$mod, ${builtins.elemAt w 0}, movetoworkspace, ${toString (builtins.elemAt w 1)}"
-        ]) [] workspaces
-        ++
-        foldl' (acc: m: acc ++ [
-          "$mod, ${builtins.elemAt m 0}, movefocus, ${builtins.elemAt m 1}"
-          "Shift+$mod, ${builtins.elemAt m 0}, movewindow, ${builtins.elemAt m 1}"
-        ]) [] motions;
+      # For each workspaces, creates bindings
+      foldl' (acc: w: acc ++ [
+        "$mod, ${builtins.elemAt w 0}, workspace, ${toString (builtins.elemAt w 1)}"
+        "Shift+$mod, ${builtins.elemAt w 0}, movetoworkspace, ${toString (builtins.elemAt w 1)}"
+      ]) [] workspaces
+      ++
+      foldl' (acc: m: acc ++ [
+        "$mod, ${builtins.elemAt m 0}, movefocus, ${builtins.elemAt m 1}"
+        "Shift+$mod, ${builtins.elemAt m 0}, movewindow, ${builtins.elemAt m 1}"
+      ]) [] motions
+      ++ [
+        "Shift+$mod, S, exec, hyprshot -m region -o $HOME/Pictures/Screenshots/"
+        "$mod, Print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/"
+        ", Print, exec, hyprshot -m window -o $HOME/Pictures/Screenshots/"
+      ];
 
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -77,7 +82,10 @@ in {
     enable = true;
   };
   stylix.targets.hyprland.enable = false;
-  home.sessionVariables = mkIf cfg.enable {
-    NIXOS_OZONE_WL = "1";
+  home = {
+    sessionVariables = mkIf cfg.enable {
+      NIXOS_OZONE_WL = "1";
+    };
+    packages = with pkgs; optionals cfg.enable [ hyprshot ];
   };
 }
