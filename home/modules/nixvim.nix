@@ -26,7 +26,7 @@ in {
           pdf_viewer = "zathura";
         };
         keymaps = {
-          watch = "cw";
+          watch = "<leader>ctw";
         };
       };
       lsp.servers.typst_lsp.enable = true;
