@@ -6,7 +6,10 @@ let
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
     package = hyprPkgs.hyprland;
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+      variables = [ "--all" ];
+    };
     xwayland.enable = true;
 
     plugins = [
@@ -76,16 +79,21 @@ in {
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
       };
+
+      exec-once = [ "cb" ];
     };
   };
-  services.hyprpaper = mkIf cfg.enable {
-    enable = true;
+  services= mkIf cfg.enable {
+    hyprpaper.enable = true;
+    copyq.enable = true;
   };
   stylix.targets.hyprland.enable = false;
   home = {
     sessionVariables = mkIf cfg.enable {
       NIXOS_OZONE_WL = "1";
     };
-    packages = with pkgs; optionals cfg.enable [ hyprshot ];
+    packages = with pkgs; optionals cfg.enable [
+      hyprshot 
+    ];
   };
 }
