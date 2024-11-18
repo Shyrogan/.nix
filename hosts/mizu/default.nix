@@ -2,6 +2,7 @@
   imports = [
     ./audio.nix
     ./bluetooth.nix
+    ./virtualisation.nix
     ./hardware.nix
     ./kernel.nix
   ];
@@ -10,6 +11,8 @@
   #networking.networkmanager.enable = true;
 
   programs.hyprland.enable = true;
+
+  virtualisation.docker.enable = true;
 
   # Users for my laptop
   users = {
