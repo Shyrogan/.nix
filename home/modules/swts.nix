@@ -4,10 +4,10 @@ let
   cfg = config.programs.swts;
 in {
   options.programs.swts = {
-    desktop.enable = mkEnableOption "Enable swts desktop bar";
+    bar.enable = mkEnableOption "Enable swts desktop bar";
   };
 
-  config.home.packages = optionals cfg.desktop.enable [
-    swts.packages.${pkgs.system}.swts-desktop
+  config.home.packages = optionals cfg.bar.enable [
+    swts.packages.${pkgs.system}.bar
   ];
 }

@@ -25,12 +25,17 @@ in {
     in {
       "$mod" = "SUPER";
 
+      general = {
+        layout = "scroller";
+      };
+
       bind = [
         "$mod, Return, exec, wezterm"
         "$mod, X, killactive"
         "$mod, Space, exec, fuzzel"
         "$mod, F, scroller:fitsize, active"
         "Shift+$mod, F, fullscreen"
+        ", XF86Launch1, scroller:toggleoverview"
       ] ++
       # For each workspaces, creates bindings
       foldl' (acc: w: acc ++ [
@@ -58,9 +63,15 @@ in {
       };
 
       decoration = {
-        rounding = 4;
+        rounding = 8;
       };
-      
+
+      animation = [
+        "workspaces, 1, 2, default, slidevert"
+        "windows, 1, 2, default, slide"
+        "fade, 0"
+      ];
+
       monitor = [
         "eDP-1,highres,auto-left,1.6"
         "HDMI-A-1,preferred,auto,1.333333"
@@ -71,16 +82,14 @@ in {
         force_zero_scaling = true;
       };
 
-      general = {
-        layout = "scroller";
-      };
-
       misc = {
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
       };
 
-      exec-once = [ "cb" ];
+      exec-once = [
+        "cb"
+      ];
     };
   };
   services= mkIf cfg.enable {

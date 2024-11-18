@@ -44,7 +44,7 @@ in {
     firefox.enable = true;
     wezterm.enable = true;
     nushell.enable = true;
-    swts.desktop.enable = true;
+    swts.bar.enable = true;
     fuzzel.enable = true;
     nixvim.enable = true;
     zathura.enable = true;
