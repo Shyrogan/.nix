@@ -29,6 +29,7 @@ in {
           watch = "<leader>ctw";
         };
       };
+      cloak.enable = lib.mkForce false;
       lsp.servers.typst_lsp.enable = true;
     };
   };
