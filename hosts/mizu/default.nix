@@ -10,8 +10,6 @@
   networking.hostName = "mizu";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "Europe/Paris";
-
   virtualisation.docker.enable = true;
 
   programs.hyprland.enable = true;

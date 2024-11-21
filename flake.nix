@@ -9,7 +9,7 @@
 
     # Stylix
     # TODO: go back to normal stylix once this is merged.
-    stylix.url = "github:laycookie/stylix";
+    stylix.url = "github:danth/stylix";
 
     # Desktop
     niri.url = "github:sodiboo/niri-flake";

@@ -96,7 +96,7 @@ in {
     hyprpaper.enable = true;
     copyq.enable = true;
   };
-  stylix.targets.hyprland.enable = false;
+  #stylix.targets.hyprland.enable = false;
   home = {
     sessionVariables = mkIf cfg.enable {
       NIXOS_OZONE_WL = "1";
