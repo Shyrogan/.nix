@@ -8,11 +8,13 @@
   ];
 
   networking.hostName = "mizu";
-  #networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true;
 
-  programs.hyprland.enable = true;
+  time.timeZone = "Europe/Paris";
 
   virtualisation.docker.enable = true;
+
+  programs.hyprland.enable = true;
 
   # Users for my laptop
   users = {
