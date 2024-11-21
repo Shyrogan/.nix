@@ -11,9 +11,9 @@ in {
   # Styling
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-light-medium.yaml";
-    image = ../assets/light-wallpaper.png;
-    polarity = "light";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    image = ../assets/dark-wallpaper.png;
+    polarity = "dark";
   };
 
   # User info

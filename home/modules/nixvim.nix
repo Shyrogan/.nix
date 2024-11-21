@@ -12,12 +12,12 @@ in {
     colorschemes = {
       base16 = {
         enable = mkForce true;
-        #colorscheme = "tokyonight";
+        colorscheme = "gruvbox-dark-medium";
       };
     };
-    #extraConfigLuaPost = ''
-    #  vim.cmd [[colorscheme base16-tokyonight]]
-    #'';
+    extraConfigLuaPost = ''
+      vim.cmd [[colorscheme base16-gruvbox-dark-medium]]
+    '';
     plugins = {
       copilot-lua.enable = mkForce false;
       typst-vim = {

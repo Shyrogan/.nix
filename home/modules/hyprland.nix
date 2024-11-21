@@ -1,7 +1,7 @@
 { inputs, config, lib, pkgs, ... }: with lib;
 let
   cfg = config.wayland.windowManager.hyprland;
-  inherit (inputs) hyprland hyprscroller;
+  inherit (inputs) hyprland hyprland-plugins;
   hyprPkgs = hyprland.packages.${pkgs.system};
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
@@ -13,7 +13,6 @@ in {
     xwayland.enable = true;
 
     plugins = [
-      hyprscroller.packages.${pkgs.system}.default
     ];
 
     settings = let
@@ -26,16 +25,17 @@ in {
       "$mod" = "SUPER";
 
       general = {
-        layout = "scroller";
+        border_size = 1;
+        #layout = "scroller";
+        gaps_out = "12,16,12,16";
       };
 
       bind = [
         "$mod, Return, exec, wezterm"
         "$mod, X, killactive"
         "$mod, Space, exec, fuzzel"
-        "$mod, F, scroller:fitsize, active"
-        "Shift+$mod, F, fullscreen"
-        ", XF86Launch1, scroller:toggleoverview"
+        "$mod, F, fullscreen, active"
+        "$mod, V, togglefloating"
       ] ++
       # For each workspaces, creates bindings
       foldl' (acc: w: acc ++ [
@@ -88,13 +88,11 @@ in {
       };
 
       exec-once = [
-        "cb"
       ];
     };
   };
-  services= mkIf cfg.enable {
+  services = mkIf cfg.enable {
     hyprpaper.enable = true;
-    copyq.enable = true;
   };
   #stylix.targets.hyprland.enable = false;
   home = {
