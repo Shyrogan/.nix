@@ -1531,11 +1531,11 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1732215537,
-        "narHash": "sha256-t4K+9i+j8pZLw0LwyZ2D/LgjhQTewgcaio5eWUNYsCk=",
+        "lastModified": 1732273184,
+        "narHash": "sha256-0Z7XK7bQgnIlXr7wxyeaMpcgFL9ltorT7Sktk3QHrV0=",
         "owner": "Shyrogan",
         "repo": "swts",
-        "rev": "466f1ac11f33ae7c1ca4e7049902c24b4ee3c603",
+        "rev": "1569df5e404f06eab9bc96c46d26ea05343cde4c",
         "type": "github"
       },
       "original": {
