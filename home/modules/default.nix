@@ -4,6 +4,7 @@
   # and only configure a program if he is enabled.
   # See: wezterm
   imports = [
+    ./ankama-launcher.nix
     ./dconf.nix
     ./fonts.nix
     ./hyprland.nix

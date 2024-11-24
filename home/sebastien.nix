@@ -29,6 +29,8 @@ in {
 
       gtk3
       gdk-pixbuf
+
+      networkmanagerapplet
     ];
 
     stateVersion = "24.05";
@@ -36,6 +38,7 @@ in {
 
   # Programs
   programs = {
+    ankama-launcher.enable = true;
     firefox.enable = true;
     wezterm.enable = true;
     nushell.enable = true;
