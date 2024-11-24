@@ -1,7 +1,7 @@
 { inputs, config, lib, pkgs, ... }: with lib;
 let
   cfg = config.wayland.windowManager.hyprland;
-  inherit (inputs) hyprland hyprland-plugins;
+  inherit (inputs) hyprland;
   hyprPkgs = hyprland.packages.${pkgs.system};
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
@@ -58,6 +58,12 @@ in {
         "$mod, mouse:273, resizewindow"
       ];
 
+      bindl = [
+        '', switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"''
+        '', switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1,highres,auto-left,1.6"''
+        
+      ];
+
       input = {
         kb_layout = "fr";
       };
@@ -94,7 +100,6 @@ in {
   services = mkIf cfg.enable {
     hyprpaper.enable = true;
   };
-  #stylix.targets.hyprland.enable = false;
   home = {
     sessionVariables = mkIf cfg.enable {
       NIXOS_OZONE_WL = "1";
