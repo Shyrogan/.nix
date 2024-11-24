@@ -11,6 +11,7 @@
     ./niri.nix
     ./nixvim.nix
     ./nushell.nix
+    ./pharo.nix
     ./swts.nix
     ./wezterm.nix
   ];

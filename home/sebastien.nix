@@ -49,6 +49,7 @@ in {
     fuzzel.enable = true;
     nixvim.enable = true;
     zathura.enable = true;
+    pharo.enable = true;
   };
   xdg.mime = {
     enable = true;
