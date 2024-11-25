@@ -31,6 +31,9 @@ in {
       gdk-pixbuf
 
       networkmanagerapplet
+
+      thunderbird
+      slack
     ];
 
     stateVersion = "24.05";
