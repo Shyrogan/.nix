@@ -18,4 +18,5 @@
     devenv
     home-manager
   ];
+  programs.nix-ld.enable = true;
 }

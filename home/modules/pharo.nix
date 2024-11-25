@@ -3,7 +3,7 @@
 in {
   options.programs.pharo.enable = mkEnableOption "Pharo";
 
-  config.home.packages = optionals cfg.enable [ (pkgs.stdenv.mkDerivation (finalAttrs: rec {
+  config.home.packages = with pkgs; optionals cfg.enable [ (stdenv.mkDerivation (finalAttrs: {
     pname = "pharo";
     version = "10.3.1";
 
