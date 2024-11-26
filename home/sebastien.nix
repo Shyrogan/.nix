@@ -32,6 +32,7 @@ in {
 
       thunderbird
       slack
+      obs-studio
     ];
 
     stateVersion = "24.05";
