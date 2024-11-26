@@ -9,6 +9,7 @@
 
   networking.hostName = "mizu";
   networking.networkmanager.enable = true;
+  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 
   virtualisation.docker.enable = true;
 

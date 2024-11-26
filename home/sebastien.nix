@@ -30,8 +30,6 @@ in {
       gtk3
       gdk-pixbuf
 
-      networkmanagerapplet
-
       thunderbird
       slack
     ];
