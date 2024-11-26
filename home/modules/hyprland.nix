@@ -105,7 +105,7 @@ in {
       NIXOS_OZONE_WL = "1";
     };
     packages = with pkgs; optionals cfg.enable [
-      hyprshot 
+      hyprshot wl-clipboard
     ];
   };
 }
