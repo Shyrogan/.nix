@@ -19,7 +19,6 @@ in {
       vim.cmd [[colorscheme base16-gruvbox-dark-medium]]
     '';
     plugins = {
-      copilot-lua.enable = mkForce false;
       typst-vim = {
         enable = true;
         settings = {
@@ -29,8 +28,10 @@ in {
           watch = "<leader>ctw";
         };
       };
-      cloak.enable = lib.mkForce false;
       lsp.servers.typst_lsp.enable = true;
     };
+    copilot.enable = false;
+    cloak.enable = false;
+    nvterm.enable = false;
   };
 }
