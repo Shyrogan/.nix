@@ -1,32 +1,45 @@
 { config, lib, ... }: with lib; let
   cfg = config.programs.nushell;
 in {
-  programs.nushell = mkIf cfg.enable {
-    configFile = {
-      text = ''
-        $env.config = {
-          show_banner: false,
-        }
-      '';
-    };
-    shellAliases = {
-      "ll" = "ls -l";
-      "lla" = "ls -la";
-    };
-  };
   # Enabling Nushell will also enable Carapace
-  programs.carapace = mkIf cfg.enable {
-    enable = true;
-    enableNushellIntegration = true;
-  };
-  # and also Starship !!
-  programs.starship = mkIf cfg.enable {
-    enable = true;
-    enableNushellIntegration = true;
-  };
-  # finally zoxide
-  programs.zoxide = {
-    enable = true;
-    enableNushellIntegration = true;
+  programs = mkIf cfg.enable {
+    nushell = {
+      configFile = {
+        text = ''
+          $env.config = {
+            show_banner: false,
+          }
+        '';
+      };
+      shellAliases = {
+        "ll" = "ls -l";
+        "lla" = "ls -la";
+      };
+    };
+    # Yeah fuck
+    thefuck = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+    # Yazi
+    yazi = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+    # For help
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+    # and also Starship !!
+    starship = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+    # finally zoxide
+    zoxide = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
   };
 }
