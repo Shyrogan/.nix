@@ -7,8 +7,10 @@
     ./kernel.nix
   ];
 
-  networking.hostName = "mizu";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "mizu";
+    networkmanager.enable = true;
+  };
   environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 
   virtualisation.docker.enable = true;
