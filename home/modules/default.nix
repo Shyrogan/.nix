@@ -13,7 +13,6 @@
     ./nushell.nix
     ./pharo.nix
     ./swts.nix
-    ./zellij.nix
     ./wezterm.nix
   ];
 }

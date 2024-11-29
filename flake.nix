@@ -52,6 +52,18 @@
               ./hosts/mizu
             ];
           };
+          hi = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = {
+              inherit inputs outputs;
+            };
+            modules = [
+              agenix.nixosModules.default
+              # Common and host-specific config
+              ./hosts/common
+              ./hosts/hi
+            ];
+          };
         };
         homeConfigurations = {
           home-manager.backupFileExtension = "backup";
