@@ -19,6 +19,10 @@ in {
       vim.cmd [[colorscheme base16-gruvbox-dark-medium]]
     '';
     plugins = {
+      copilot-vim.enable = lib.mkForce false;
+      copilot-chat.enable = lib.mkForce false;
+      copilot-cmp.enable = lib.mkForce false;
+
       typst-vim = {
         enable = true;
         settings = {
