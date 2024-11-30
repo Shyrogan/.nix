@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: let
-  inherit (inputs) stylix nixvim;
+  inherit (inputs) stylix;
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -33,6 +33,8 @@ in {
       thunderbird
       slack
       obs-studio
+
+      gitkraken
     ];
 
     stateVersion = "24.05";

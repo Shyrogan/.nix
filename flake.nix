@@ -78,6 +78,16 @@
               ./home/sebastien.nix
             ];
           };
+          root = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = {
+              inherit inputs outputs;
+            };
+
+            modules = [
+              ./home/root.nix
+            ];
+          };
         };
       }
     );

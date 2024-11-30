@@ -4,17 +4,12 @@
     ./hardware.nix
   ];
 
-  age.secrets = {
-    sebastien_key = {
-      file = ../../secrets/hi/sebastien_key.age;
-      path = "/home/root/sebastien_key";
-    };
-  };
-
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+  
+  virtualisation.docker.enable = true;
 
   networking = {
     hostName = "hi";
