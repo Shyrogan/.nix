@@ -1,7 +1,7 @@
 { inputs, config, lib, pkgs, ... }: with lib;
 let
   cfg = config.wayland.windowManager.hyprland;
-  inherit (inputs) hyprland;
+  inherit (inputs) hyprland hyprspace;
   hyprPkgs = hyprland.packages.${pkgs.system};
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
@@ -13,6 +13,7 @@ in {
     xwayland.enable = true;
 
     plugins = [
+      #hyprspace.packages.${pkgs.system}.Hyprspace
     ];
 
     settings = let
@@ -51,6 +52,13 @@ in {
         "Shift+$mod, S, exec, hyprshot -m region -o $HOME/Pictures/Screenshots/"
         "$mod, Print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/"
         ", Print, exec, hyprshot -m window -o $HOME/Pictures/Screenshots/"
+        ", XF86MonBrightnessUp, exec, brightnessctl s 10%+"
+        ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+        ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +10%"
+        ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -10%"
+        ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
+        ", XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle && brightnessctl -d platform::micmute set $((1 - $(brightnessctl -d platform::micmute g)))"
+        "$mod, Colon, exec, smile"
       ];
 
       bindm = [
@@ -93,7 +101,12 @@ in {
         disable_hyprland_logo = true;
       };
 
+      windowrulev2 = [
+        "float, class:(it.mijorus.smile)"
+      ];
+
       exec-once = [
+        "pactl set-source-mute @DEFAULT_SOURCE@ 0"
       ];
     };
   };
@@ -106,6 +119,7 @@ in {
     };
     packages = with pkgs; optionals cfg.enable [
       hyprshot wl-clipboard libdbusmenu
+      brightnessctl pulseaudio smile 
     ];
   };
 }
