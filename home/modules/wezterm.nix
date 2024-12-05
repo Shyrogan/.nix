@@ -5,8 +5,7 @@ in{
   programs.wezterm = lib.mkIf cfg.enable {
     package = inputs.wezterm.packages.${pkgs.system}.default;
     extraConfig = ''
-      return {
-        font = wezterm.font {
+      return { font = wezterm.font {
           family = "JetBrainsMono Nerd Font Mono",
           weight = "DemiBold",
         },

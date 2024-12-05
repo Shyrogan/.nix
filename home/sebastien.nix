@@ -54,6 +54,7 @@ in {
     nixvim.enable = true;
     zathura.enable = true;
     #pharo.enable = true;
+    zellij.enable = true;
   };
   xdg.mime = {
     enable = true;
