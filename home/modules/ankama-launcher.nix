@@ -4,7 +4,7 @@ let
   name = "ankama-launcher";
   src = pkgs.fetchurl {
     url = "https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage";
-    hash = "sha256-IWPpOSXMATzdWfmPUadadFcM0U+bxHZ7vrMqmvS+kMA=";
+    hash = "sha256-K/qe/qxMfcGWU5gyEfPdl0ptjTCWaqIXMCy4O8WEKCQ=";
   };
   content = pkgs.appimageTools.extractType2 { inherit name src; };
 in {
