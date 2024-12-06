@@ -1612,11 +1612,11 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1732888229,
-        "narHash": "sha256-+pIp1BGskIetCAzttJVhYfPmCwYeQMbho1DopepkPKk=",
+        "lastModified": 1733519836,
+        "narHash": "sha256-hteCIMQnB/wInQpgMVwe6nnSFOLqXm/dA30dmbfcTjg=",
         "owner": "Shyrogan",
         "repo": "swts",
-        "rev": "99e4dd81ef79b73b88e31be9fb7687dd351f7454",
+        "rev": "f0c7276be534fdeddcadf98db9ad46d5c0592d76",
         "type": "github"
       },
       "original": {

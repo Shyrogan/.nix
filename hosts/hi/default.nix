@@ -20,10 +20,6 @@
     }];
     defaultGateway = builtins.readFile config.age.secrets.addr_gw.path;
     nameservers = [ "8.8.8.8" ];
-    firewall = {
-      allowedTCPPorts = [ 80 443 943 ];
-      allowedUDPPorts = [ 1194 ];
-    };
   };
 
   services.openssh.enable = true;
@@ -32,5 +28,6 @@
     packages = with pkgs; [ nushell ];
     openssh.authorizedKeys.key = [
     ];
+    extraGroups = ["docker"];
   };
 }
