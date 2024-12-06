@@ -41,5 +41,10 @@ in {
       enable = true;
       enableNushellIntegration = true;
     };
+    # Nix your shell
+    nix-your-shell = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
   };
 }
