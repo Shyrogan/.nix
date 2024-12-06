@@ -1,17 +1,18 @@
 { pkgs, config, lib, ... }: with lib;
 let
   cfg = config.programs.ankama-launcher;
-  name = "ankama-launcher";
+  pname = "ankama-launcher";
+  version = "0.1.0";
   src = pkgs.fetchurl {
     url = "https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage";
     hash = "sha256-K/qe/qxMfcGWU5gyEfPdl0ptjTCWaqIXMCy4O8WEKCQ=";
   };
-  content = pkgs.appimageTools.extractType2 { inherit name src; };
+  content = pkgs.appimageTools.extractType2 { inherit pname version src; };
 in {
   options.programs.ankama-launcher.enable = mkEnableOption "Ankama's launcher";
 
   config.home.packages = optionals cfg.enable [ (pkgs.appimageTools.wrapType2 {
-    inherit name src;
+    inherit pname version src;
 
     extraInstallCommands = ''
       ls -la ${content}

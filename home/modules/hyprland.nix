@@ -13,7 +13,7 @@ in {
     xwayland.enable = true;
 
     plugins = [
-      #hyprspace.packages.${pkgs.system}.Hyprspace
+      hyprspace.packages.${pkgs.system}.Hyprspace
     ];
 
     settings = let
@@ -58,6 +58,7 @@ in {
         ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -10%"
         ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
         ", XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle && brightnessctl -d platform::micmute set $((1 - $(brightnessctl -d platform::micmute g)))"
+        ", XF86Launch1, overview:toggle"
         "$mod, Colon, exec, smile"
       ];
 

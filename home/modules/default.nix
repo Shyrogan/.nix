@@ -14,5 +14,6 @@
     ./pharo.nix
     ./swts.nix
     ./wezterm.nix
+    ./zellij.nix
   ];
 }
