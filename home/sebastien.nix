@@ -35,6 +35,11 @@ in {
       obs-studio
 
       gitkraken
+
+      # DevOps tools
+      k3s
+      argocd
+      kubernetes-helm
     ];
 
     stateVersion = "24.05";
