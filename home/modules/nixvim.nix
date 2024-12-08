@@ -32,7 +32,11 @@ in {
           watch = "<leader>ctw";
         };
       };
-      lsp.servers.typst_lsp.enable = true;
+      lsp.servers = {
+        typst_lsp.enable = true;
+        helm_ls.enable = true;
+        dockerls.enable = true;
+      };
     };
     copilot.enable = false;
     cloak.enable = false;
