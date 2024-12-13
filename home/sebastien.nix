@@ -40,6 +40,12 @@ in {
       k3s
       argocd
       kubernetes-helm
+
+      # Desktop stuff
+      libreoffice-qt
+      hunspell
+      hunspellDicts.fr-moderne
+      hunspellDicts.en_US
     ];
 
     stateVersion = "24.05";
