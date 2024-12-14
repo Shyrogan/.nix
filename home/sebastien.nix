@@ -46,6 +46,7 @@ in {
       hunspell
       hunspellDicts.fr-moderne
       hunspellDicts.en_US
+      zotero
     ];
 
     stateVersion = "24.05";
