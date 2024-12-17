@@ -12,7 +12,7 @@ in {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-    image = ../assets/dark-wallpaper.png;
+    image = ../assets/wallpaper_loris.png;
     polarity = "dark";
   };
 
@@ -25,6 +25,7 @@ in {
       graalvm-ce
 
       jetbrains.idea-ultimate
+      eclipses.eclipse-modeling
       vesktop
 
       gtk3
