@@ -36,6 +36,7 @@ in {
         typst_lsp.enable = true;
         helm_ls.enable = true;
         dockerls.enable = true;
+        dartls.enable = true;
       };
     };
     copilot.enable = false;
