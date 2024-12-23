@@ -3,6 +3,7 @@ let
   cfg = config.wayland.windowManager.hyprland;
   inherit (inputs) hyprland hyprspace hyprland-plugins;
   hyprPkgs = hyprland.packages.${pkgs.system};
+  colors = config.lib.stylix.colors;
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
     package = hyprPkgs.hyprland;
@@ -11,9 +12,6 @@ in {
       variables = [ "--all" ];
     };
     xwayland.enable = true;
-
-    plugins = [
-    ];
 
     settings = let
       workspaces = [
@@ -25,8 +23,7 @@ in {
       "$mod" = "SUPER";
 
       general = {
-        border_size = 1;
-        #layout = "scroller";
+        border_size = 0;
         gaps_out = "12,16,12,16";
       };
 
@@ -77,7 +74,7 @@ in {
       };
 
       decoration = {
-        rounding = 8;
+        rounding = 12;
       };
 
       animation = [
@@ -103,10 +100,6 @@ in {
 
       windowrulev2 = [
         "float, class:(it.mijorus.smile)"
-      ];
-
-      exec-once = [
-        "pactl set-source-mute @DEFAULT_SOURCE@ 0"
       ];
     };
   };

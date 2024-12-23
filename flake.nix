@@ -22,7 +22,6 @@
       url = "github:KZDKM/Hyprspace";
       inputs.hyprland.follows = "hyprland";
     };
-    swts.url = "github:Shyrogan/swts";
 
     # Applications
     nixvim.url = "github:nix-community/nixvim";
