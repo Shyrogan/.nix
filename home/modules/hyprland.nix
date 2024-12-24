@@ -61,6 +61,8 @@ in {
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
+        "$mod, Control_L, movewindow"
+        "$mod, ALT_L, resizewindow"
       ];
 
       bindl = [
