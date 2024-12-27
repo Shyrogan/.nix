@@ -13,11 +13,11 @@ in {
     colorschemes = {
       base16 = {
         enable = mkForce true;
-        colorscheme = "gruvbox-dark-medium";
+        colorscheme = "summerfruit-dark";
       };
     };
     extraConfigLuaPost = ''
-      vim.cmd [[colorscheme base16-gruvbox-dark-medium]]
+      vim.cmd [[colorscheme summerfruit-dark]]
     '';
     plugins = {
       copilot-vim.enable = lib.mkForce false;
