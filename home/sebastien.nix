@@ -65,8 +65,19 @@ in {
     #pharo.enable = true;
     zellij.enable = true;
   };
-  xdg.mime = {
-    enable = true;
+  xdg = {
+    mime = {
+      enable = true;
+    };
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = ["zathura.desktop"];
+        "x-scheme-handler/http" = ["firefox.desktop"];
+        "x-scheme-handler/https" = ["firefox.desktop"];
+        "text/html" = ["firefox.desktop"];
+      };
+    };
   };
   wayland.windowManager.hyprland.enable = true;
 }

@@ -8,6 +8,7 @@ in {
 
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
     imports = [ neve.nixvimModule ];
     colorschemes = {
       base16 = {
