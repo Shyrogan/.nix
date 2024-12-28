@@ -17,24 +17,14 @@ in {
       };
     };
     extraConfigLuaPost = ''
-      vim.cmd [[colorscheme summerfruit-dark]]
+      vim.cmd [[colorscheme base16-summerfruit-dark]]
     '';
     plugins = {
       copilot-vim.enable = lib.mkForce false;
       copilot-chat.enable = lib.mkForce false;
       copilot-cmp.enable = lib.mkForce false;
 
-      typst-vim = {
-        enable = true;
-        settings = {
-          pdf_viewer = "zathura";
-        };
-        keymaps = {
-          watch = "<leader>ctw";
-        };
-      };
       lsp.servers = {
-        typst_lsp.enable = true;
         helm_ls.enable = true;
         dockerls.enable = true;
         dartls.enable = true;
