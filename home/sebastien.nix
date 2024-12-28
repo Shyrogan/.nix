@@ -11,7 +11,7 @@ in {
   # Styling
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/summerfruit-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     image = ../assets/wallpaper_loris.png;
     polarity = "dark";
   };
