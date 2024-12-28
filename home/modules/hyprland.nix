@@ -77,6 +77,12 @@ in {
 
       decoration = {
         rounding = 12;
+
+        shadow = {
+          range = 12;
+          render_power = 3;
+          color = lib.mkForce "rgba(00000045)";
+        };
       };
 
       animation = [
