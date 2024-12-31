@@ -7,6 +7,7 @@
     ./ankama-launcher.nix
     ./dconf.nix
     ./fonts.nix
+    ./ghostty.nix
     ./hyprland.nix
     ./niri.nix
     ./nixvim.nix

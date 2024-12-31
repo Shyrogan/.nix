@@ -11,7 +11,7 @@ in {
   # Styling
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    base16Scheme = ../assets/config/gruvbox-dark-hard-base16.yml;
     image = ../assets/wallpaper_loris.png;
     polarity = "dark";
   };
@@ -64,6 +64,7 @@ in {
     zathura.enable = true;
     #pharo.enable = true;
     zellij.enable = true;
+    ghostty.enable = true;
   };
   xdg = {
     mime = {

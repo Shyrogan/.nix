@@ -11,14 +11,17 @@ in {
     defaultEditor = true;
     imports = [ neve.nixvimModule ];
     colorschemes = {
-      base16 = {
-        enable = mkForce true;
-        colorscheme = "gruvbox-dark-hard";
+      catppuccin.enable = mkForce false;
+      gruvbox = {
+        enable = true;
+        settings = {
+          contrast = "hard";
+          terminal_colors = true;
+          transparent_mode = true;
+        };
       };
     };
-    extraConfigLuaPost = ''
-      vim.cmd [[colorscheme base16-gruvbox-dark-hard]]
-    '';
+    extraConfigLuaPost = ''vim.cmd [[ colorscheme gruvbox ]]'';
     plugins = {
       copilot-vim.enable = lib.mkForce false;
       copilot-chat.enable = lib.mkForce false;

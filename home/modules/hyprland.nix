@@ -28,7 +28,7 @@ in {
       };
 
       bind = [
-        "$mod, Return, exec, wezterm"
+        "$mod, Return, exec, ghostty"
         "$mod, X, killactive"
         "$mod, Space, exec, fuzzel"
         "$mod, F, fullscreen, active"
