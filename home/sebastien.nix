@@ -57,7 +57,7 @@ in {
   programs = {
     ankama-launcher.enable = true;
     firefox.enable = true;
-    wezterm.enable = true;
+    #wezterm.enable = true;
     nushell.enable = true;
     fuzzel.enable = true;
     nixvim.enable = true;

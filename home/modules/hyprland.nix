@@ -1,7 +1,7 @@
 { inputs, config, lib, pkgs, ... }: with lib;
 let
   cfg = config.wayland.windowManager.hyprland;
-  inherit (inputs) hyprland hyprspace hyprland-plugins;
+  inherit (inputs) hyprland hyprland-plugins;
   hyprPkgs = hyprland.packages.${pkgs.system};
   colors = config.lib.stylix.colors;
 in {
@@ -12,6 +12,9 @@ in {
       variables = [ "--all" ];
     };
     xwayland.enable = true;
+    plugins = [
+      hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    ];
 
     settings = let
       workspaces = [
@@ -54,7 +57,7 @@ in {
         ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -10%"
         ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
         ", XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle && brightnessctl -d platform::micmute set $((1 - $(brightnessctl -d platform::micmute g)))"
-          #", XF86Launch1, overview:toggle"
+        ", XF86Launch1, hyprexpo:expo, toggle"
         "$mod, Colon, exec, smile"
       ];
 
@@ -104,11 +107,16 @@ in {
       misc = {
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
+        middle_click_paste = false;
       };
 
       windowrulev2 = [
         "float, class:(it.mijorus.smile)"
       ];
+
+      gestures = {
+        workspace_swipe = true;
+      };
     };
   };
   services = mkIf cfg.enable {
