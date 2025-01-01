@@ -67,9 +67,6 @@ in {
     ghostty.enable = true;
   };
   xdg = {
-    mime = {
-      enable = true;
-    };
     mimeApps = {
       enable = true;
       defaultApplications = {

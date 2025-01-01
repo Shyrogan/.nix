@@ -15,6 +15,9 @@ in {
         "ll" = "ls -l";
         "lla" = "ls -la";
       };
+      envFile.text = ''
+        $env.EDITOR = "nvim"
+      '';
     };
     # Yeah fuck
     thefuck = {

@@ -15,7 +15,6 @@ in {
       gruvbox = {
         enable = true;
         settings = {
-          contrast = "hard";
           terminal_colors = true;
           transparent_mode = true;
         };
@@ -36,5 +35,8 @@ in {
     copilot.enable = false;
     cloak.enable = false;
     nvterm.enable = false;
+  };
+  home.sessionVariables = {
+    EDITOR = "nvim";
   };
 }
