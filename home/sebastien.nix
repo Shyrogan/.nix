@@ -41,6 +41,7 @@ in {
       k3s
       argocd
       kubernetes-helm
+      vlc
 
       # Desktop stuff
       libreoffice-qt
