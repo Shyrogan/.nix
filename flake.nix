@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     agenix.url = "github:ryantm/agenix";
 
     # Stylix
@@ -21,8 +22,7 @@
 
     # Applications
     nixvim.url = "github:nix-community/nixvim";
-    neve.url = "github:redyf/Neve";
-    ghostty.url = "github:ghostty-org/ghostty";
+    neve.url = "github:Shyrogan/Neve";
   };
 
   outputs = {
@@ -30,6 +30,7 @@
     nixpkgs,
     flake-utils,
     home-manager,
+    nixos-hardware,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystemPassThrough (
@@ -46,6 +47,9 @@
             };
             modules = [
               agenix.nixosModules.default
+              nixos-hardware.nixosModules.common-cpu-amd
+              nixos-hardware.nixosModules.common-gpu-amd
+              nixos-hardware.nixosModules.common-pc-laptop-ssd
               # Common and host-specific config
               ./hosts/common
               ./hosts/mizu

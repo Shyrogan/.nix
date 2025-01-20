@@ -10,10 +10,6 @@
         name = "v2-1-1-Bluetooth-btusb-add-13d3-3608-VID-PID-for-MT7925";
         patch = ./patches/v2-1-1-Bluetooth-btusb-add-13d3-3608-VID-PID-for-MT7925.patch;
       }
-      {
-        name = "Add a new driver for AMD AI Engine";
-        patch = ./patches/npu.patch;
-      }
     ];
     kernelParams = ["amdgpu.dcdebugmask=0x600"];
   };

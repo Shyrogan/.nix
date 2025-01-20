@@ -11,11 +11,29 @@
     hostName = "mizu";
     networkmanager.enable = true;
   };
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+  environment = {
+    variables = {
+      ROC_ENABLE_PRE_VEGA = "1";
+    };
+    systemPackages = with pkgs; [ networkmanagerapplet ];
+  };
 
   virtualisation.docker.enable = true;
 
   programs.hyprland.enable = true;
+
+  hardware = {
+    amdgpu.opencl.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs.rocmPackages; [ clr clr.icd rocminfo rocm-runtime ];
+    };
+  };
+
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}"
+  ];
 
   # Users for my laptop
   users = {

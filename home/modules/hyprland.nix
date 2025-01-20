@@ -3,7 +3,6 @@ let
   cfg = config.wayland.windowManager.hyprland;
   inherit (inputs) hyprland hyprland-plugins;
   hyprPkgs = hyprland.packages.${pkgs.system};
-  colors = config.lib.stylix.colors;
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
     package = hyprPkgs.hyprland;
@@ -13,7 +12,6 @@ in {
     };
     xwayland.enable = true;
     plugins = [
-      hyprland-plugins.packages.${pkgs.system}.hyprexpo
     ];
 
     settings = let
@@ -57,7 +55,7 @@ in {
         ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -10%"
         ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
         ", XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle && brightnessctl -d platform::micmute set $((1 - $(brightnessctl -d platform::micmute g)))"
-        ", XF86Launch1, hyprexpo:expo, toggle"
+          #", XF86Launch1, hyprexpo:expo, toggle"
         "$mod, Colon, exec, smile"
       ];
 
