@@ -37,6 +37,10 @@ in {
 
       gitkraken
 
+
+      zotero
+      onlyoffice-bin
+
       # DevOps tools
       k3s
       argocd
