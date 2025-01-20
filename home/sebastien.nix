@@ -64,6 +64,11 @@ in {
     zellij.enable = true;
     ghostty.enable = true;
   };
+
+  services = {
+    ollama.enable = true;
+  };
+
   xdg = {
     mimeApps = {
       enable = true;
