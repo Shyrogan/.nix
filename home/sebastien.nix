@@ -14,6 +14,10 @@ in {
     base16Scheme = ../assets/config/gruvbox-dark-hard-base16.yml;
     image = ../assets/wallpaper_loris.png;
     polarity = "dark";
+    fonts.monospace = {
+      name = "JetBrainsMono Nerd Font";
+      package = pkgs.nerd-fonts.jetbrains-mono;
+    };
   };
 
   # User info

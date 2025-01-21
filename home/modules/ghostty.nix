@@ -9,14 +9,13 @@ in {
   #};
   programs.ghostty = mkIf cfg.enable {
     settings = {
-      theme = "GruvboxDarkHard";
       confirm-close-surface = false;
-      font-family = "JetBrainsMono Nerd Font";
       font-style = "Medium";
 
       window-decoration = false;
       window-padding-x = 8;
       window-padding-y = 12;
+      theme = "GruvboxDarkHard";
     };
   };
 }
