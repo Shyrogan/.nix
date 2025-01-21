@@ -1,7 +1,6 @@
-{ lib, inputs, ... }: with lib;
+{ lib, inputs, pkgs, ... }: with lib;
 let
-  inherit (inputs) neve nixvim;
-in {
+  inherit (inputs) neve nixvim; in {
   imports = [
     nixvim.homeManagerModules.nixvim
   ];
@@ -29,7 +28,6 @@ in {
       lsp.servers = {
         helm_ls.enable = true;
         dockerls.enable = true;
-        dartls.enable = true;
         sqls = {
           enable = true;
           onAttach.function = ''
@@ -38,6 +36,21 @@ in {
           '';
         };
         biome.enable = true;
+        rust_analyzer = {
+          rustcPackage = pkgs.rustc;
+          rustfmtPackage = pkgs.rustfmt;
+          cargoPackage = pkgs.cargo;
+        };
+        tinymist.enable = true;
+      };
+      typst-vim = {
+        enable = true;
+        settings = {
+          pdf_viewer = "zathura";
+        };
+        keymaps = {
+          watch = "<leader>dT";
+        };
       };
     };
     copilot.enable = false;
