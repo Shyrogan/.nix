@@ -23,6 +23,7 @@
     nixvim.url = "github:nix-community/nixvim";
     neve.url = "github:Redyf/Neve";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    fenix.url = "github:nix-community/fenix";
   };
 
   outputs = {

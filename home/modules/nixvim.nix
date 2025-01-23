@@ -1,6 +1,8 @@
 { lib, inputs, pkgs, ... }: with lib;
 let
-  inherit (inputs) neve nixvim; in {
+  inherit (inputs) neve nixvim fenix;
+in
+{
   imports = [
     nixvim.homeManagerModules.nixvim
   ];

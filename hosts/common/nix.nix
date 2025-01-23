@@ -1,5 +1,11 @@
-{ pkgs, ... }: {
-  nixpkgs.config.allowUnfree = true;
+{ inputs, pkgs, ... }: let
+  inherit (inputs) fenix;
+in
+{
+  nixpkgs = {
+    overlays = [ fenix.overlays.default ];
+    config.allowUnfree = true;
+  };
   nix = {
     gc = {
       automatic = true;
