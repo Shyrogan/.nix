@@ -12,7 +12,6 @@
     ./niri.nix
     ./nixvim.nix
     ./nushell.nix
-    ./programming.nix
     ./wezterm.nix
     ./zellij.nix
   ];

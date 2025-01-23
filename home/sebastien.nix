@@ -63,11 +63,6 @@ in {
     ghostty.enable = true;
   };
 
-  programming = {
-    rust.enable = true;
-    web.enable = true;
-  };
-
   services = {
     ollama.enable = true;
   };
