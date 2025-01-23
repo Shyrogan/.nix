@@ -9,7 +9,6 @@
     agenix.url = "github:ryantm/agenix";
 
     # Stylix
-    # TODO: go back to normal stylix once this is merged.
     stylix.url = "github:danth/stylix";
 
     # Desktop
@@ -23,6 +22,7 @@
     # Applications
     nixvim.url = "github:nix-community/nixvim";
     neve.url = "github:Shyrogan/Neve";
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs = {
@@ -31,6 +31,7 @@
     flake-utils,
     home-manager,
     nixos-hardware,
+    nix-gaming,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystemPassThrough (
@@ -50,6 +51,7 @@
               nixos-hardware.nixosModules.common-cpu-amd
               nixos-hardware.nixosModules.common-gpu-amd
               nixos-hardware.nixosModules.common-pc-laptop-ssd
+              nix-gaming.nixosModules.platformOptimizations
               # Common and host-specific config
               ./hosts/common
               ./hosts/mizu

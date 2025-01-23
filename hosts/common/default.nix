@@ -3,6 +3,7 @@
 in {
   imports = [
     ./nix.nix
+    ./gaming.nix
     ./desktops/hyprland.nix
   ];
 

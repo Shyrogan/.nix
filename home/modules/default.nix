@@ -12,7 +12,7 @@
     ./niri.nix
     ./nixvim.nix
     ./nushell.nix
-    ./pharo.nix
+    ./programming.nix
     ./wezterm.nix
     ./zellij.nix
   ];

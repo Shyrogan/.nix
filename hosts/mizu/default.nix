@@ -20,7 +20,10 @@
 
   virtualisation.docker.enable = true;
 
-  programs.hyprland.enable = true;
+  programs = {
+    hyprland.enable = true;
+    steam.enable = true;
+  };
 
   hardware = {
     amdgpu.opencl.enable = true;

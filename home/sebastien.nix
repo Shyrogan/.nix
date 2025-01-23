@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: let
-  inherit (inputs) stylix;
+  inherit (inputs) nix-gaming stylix;
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -27,9 +27,6 @@ in {
 
     packages = with pkgs; [
       graalvm-ce
-
-      jetbrains.idea-ultimate
-      eclipses.eclipse-modeling
       vesktop
 
       gtk3
@@ -41,7 +38,6 @@ in {
 
       gitkraken
 
-
       zotero
       onlyoffice-bin
 
@@ -50,6 +46,8 @@ in {
       argocd
       kubernetes-helm
       vlc
+
+      nix-gaming.packages.${pkgs.hostPlatform.system}.rocket-league
     ];
 
     stateVersion = "24.05";
@@ -59,14 +57,17 @@ in {
   programs = {
     ankama-launcher.enable = true;
     firefox.enable = true;
-    #wezterm.enable = true;
     nushell.enable = true;
     fuzzel.enable = true;
     nixvim.enable = true;
     zathura.enable = true;
-    #pharo.enable = true;
     zellij.enable = true;
     ghostty.enable = true;
+  };
+
+  programming = {
+    rust.enable = true;
+    web.enable = true;
   };
 
   services = {
