@@ -46,8 +46,6 @@ in {
       argocd
       kubernetes-helm
       vlc
-
-      nix-gaming.packages.${pkgs.hostPlatform.system}.rocket-league
     ];
 
     stateVersion = "24.05";
