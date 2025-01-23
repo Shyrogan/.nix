@@ -38,10 +38,11 @@ in
           '';
         };
         biome.enable = true;
-        rust_analyzer = {
-          rustcPackage = pkgs.rustc;
-          rustfmtPackage = pkgs.rustfmt;
-          cargoPackage = pkgs.cargo;
+        rust_analyzer = let f = fenix.packages.${pkgs.system}; in {
+          package = f.rust-analyzer;
+          cargoPackage = f.stable.cargo;
+          rustcPackage = f.stable.rustc;
+          rustfmtPackage = f.stable.rustfmt;
         };
         tinymist.enable = true;
       };
