@@ -21,7 +21,7 @@
 
     # Applications
     nixvim.url = "github:nix-community/nixvim";
-    neve.url = "github:Shyrogan/Neve";
+    neve.url = "github:Redyf/Neve";
     nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
