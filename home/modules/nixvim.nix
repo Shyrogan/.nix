@@ -27,6 +27,8 @@ in
       copilot-chat.enable = lib.mkForce false;
       copilot-cmp.enable = lib.mkForce false;
 
+      tailwind-tools.enable = true;
+
       lsp.servers = {
         helm_ls.enable = true;
         dockerls.enable = true;
@@ -45,6 +47,8 @@ in
           rustfmtPackage = f.stable.rustfmt;
         };
         tinymist.enable = true;
+        svelte.enable = true;
+        tailwindcss.enable = true;
       };
       typst-vim = {
         enable = true;
