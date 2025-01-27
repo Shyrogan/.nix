@@ -127,6 +127,7 @@ in {
     packages = with pkgs; optionals cfg.enable [
       hyprshot wl-clipboard libdbusmenu
       brightnessctl pulseaudio smile 
+      mission-center myxer
     ];
   };
 }
