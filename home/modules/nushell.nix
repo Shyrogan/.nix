@@ -14,6 +14,7 @@ in {
       shellAliases = {
         "ll" = "ls -l";
         "lla" = "ls -la";
+        "nd" = "nix develop --no-pure-eval";
       };
       envFile.text = ''
         $env.EDITOR = "nvim"
