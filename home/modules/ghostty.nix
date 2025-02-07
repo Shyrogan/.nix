@@ -15,7 +15,7 @@ in {
       window-decoration = false;
       window-padding-x = 8;
       window-padding-y = 12;
-      theme = "GruvboxDarkHard";
+      theme = "GruvboxDark";
     };
   };
 }
