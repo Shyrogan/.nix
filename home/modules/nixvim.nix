@@ -59,6 +59,7 @@ in
           watch = "<leader>dT";
         };
       };
+      avante.enable = true;
     };
     copilot.enable = false;
     cloak.enable = false;
