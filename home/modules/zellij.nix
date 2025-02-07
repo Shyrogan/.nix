@@ -1,10 +1,11 @@
 { config, lib, ... }: with lib; let
   cfg = config.programs.zellij;
 in {
-  xdg.configFile."zellij/config.kdl" = mkIf cfg.enable {
+  options.programs.zellij.nuShellIntegration = mkEnableOption "Enable zellij for nu";
+  config.xdg.configFile."zellij/config.kdl" = mkIf cfg.enable {
     text = builtins.readFile ../../assets/config/zellij.kdl;
   };
-  programs.nushell = mkIf cfg.enable {
+  config.programs.nushell = mkIf cfg.nuShellIntegration {
     extraConfig = ''
       def start_zellij [] {
         if 'ZELLIJ' not-in ($env | columns) {
