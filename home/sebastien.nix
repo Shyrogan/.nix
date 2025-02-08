@@ -59,7 +59,10 @@ in {
     fuzzel.enable = true;
     nixvim.enable = true;
     zathura.enable = true;
-    zellij.enable = true;
+    zellij = {
+      enable = true;
+      nuShellIntegration = true;
+    };
     ghostty.enable = true;
   };
 

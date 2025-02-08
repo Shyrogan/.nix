@@ -1,8 +1,8 @@
-{ config, lib, ... }: with lib; let
+{ config, lib, pkgs, ... }: with lib; let
   cfg = config.programs.nushell;
 in {
   # Enabling Nushell will also enable Carapace
-  programs = mkIf cfg.enable {
+  config.programs = mkIf cfg.enable {
     nushell = {
       configFile = {
         text = ''
