@@ -24,6 +24,8 @@
     neve.url = "github:Redyf/Neve";
     nix-gaming.url = "github:fufexan/nix-gaming";
     fenix.url = "github:nix-community/fenix";
+
+    zjstatus.url = "github:dj95/zjstatus";
   };
 
   outputs = {
@@ -58,18 +60,6 @@
               ./hosts/mizu
             ];
           };
-          hi = nixpkgs.lib.nixosSystem {
-            inherit system;
-            specialArgs = {
-              inherit inputs outputs;
-            };
-            modules = [
-              agenix.nixosModules.default
-              # Common and host-specific config
-              ./hosts/common
-              ./hosts/hi
-            ];
-          };
         };
         homeConfigurations = {
           home-manager.backupFileExtension = "backup";
@@ -82,16 +72,6 @@
 
             modules = [
               ./home/sebastien.nix
-            ];
-          };
-          root = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            extraSpecialArgs = {
-              inherit inputs outputs;
-            };
-
-            modules = [
-              ./home/root.nix
             ];
           };
         };
