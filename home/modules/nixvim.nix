@@ -60,6 +60,7 @@ in
         };
       };
       #avante.enable = true;
+      wakatime.enable = lib.mkForce false;
     };
     copilot.enable = false;
     cloak.enable = false;
