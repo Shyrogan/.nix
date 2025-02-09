@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }: with lib; let
+{ config, lib, ... }: with lib; let
   cfg = config.programs.nushell;
 in {
+  age.secrets.env.file = ../../secrets/env.age;
   # Enabling Nushell will also enable Carapace
-  config.programs = mkIf cfg.enable {
+  programs = mkIf cfg.enable {
     nushell = {
       configFile = {
         text = ''
@@ -16,8 +17,8 @@ in {
         "lla" = "ls -la";
         "nd" = "nix develop --no-pure-eval";
       };
-      envFile.text = ''
-        $env.EDITOR = "nvim"
+      envFile.text= ''
+        source ${config.age.secrets.env.path}
       '';
     };
     # Yeah fuck

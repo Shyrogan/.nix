@@ -69,6 +69,7 @@
             };
 
             modules = [
+              agenix.homeManagerModules.default
               ./home/sebastien.nix
             ];
           };
