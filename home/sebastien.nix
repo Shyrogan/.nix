@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: let
-  inherit (inputs) nix-gaming stylix;
+  inherit (inputs) stylix;
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -46,6 +46,9 @@ in {
       argocd
       kubernetes-helm
       vlc
+      sshfs
+
+      prismlauncher
     ];
 
     stateVersion = "24.05";
