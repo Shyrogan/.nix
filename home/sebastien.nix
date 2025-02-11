@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: let
-  inherit (inputs) stylix;
+  inherit (inputs) stylix zen-browser;
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -49,6 +49,9 @@ in {
       sshfs
 
       prismlauncher
+      zen-browser.packages.${pkgs.system}.default
+
+      jetbrains.datagrip
     ];
 
     stateVersion = "24.05";
@@ -57,7 +60,7 @@ in {
   # Programs
   programs = {
     ankama-launcher.enable = true;
-    firefox.enable = true;
+    #firefox.enable = true;
     nushell.enable = true;
     fuzzel.enable = true;
     nixvim.enable = true;
@@ -78,9 +81,9 @@ in {
       enable = true;
       defaultApplications = {
         "application/pdf" = ["zathura.desktop"];
-        "x-scheme-handler/http" = ["firefox.desktop"];
-        "x-scheme-handler/https" = ["firefox.desktop"];
-        "text/html" = ["firefox.desktop"];
+        "x-scheme-handler/http" = ["zen-browser.desktop"];
+        "x-scheme-handler/https" = ["zen-browser.desktop"];
+        "text/html" = ["zen-browser.desktop"];
       };
     };
   };

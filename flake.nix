@@ -4,26 +4,51 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager" ;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     agenix.url = "github:ryantm/agenix";
 
     # Stylix
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Desktop
     niri.url = "github:sodiboo/niri-flake";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
 
     # Applications
-    nixvim.url = "github:nix-community/nixvim";
-    neve.url = "github:Redyf/Neve";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    fenix.url = "github:nix-community/fenix";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neve = {
+      url = "github:Redyf/Neve";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
