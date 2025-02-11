@@ -52,6 +52,7 @@ in {
       zen-browser.packages.${pkgs.system}.default
 
       jetbrains.datagrip
+      just
     ];
 
     stateVersion = "24.05";
