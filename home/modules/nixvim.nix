@@ -49,6 +49,7 @@ in
         tinymist.enable = true;
         svelte.enable = true;
         tailwindcss.enable = true;
+        jdtls.enable = true;
       };
       typst-vim = {
         enable = true;
@@ -61,6 +62,10 @@ in
       };
       avante.enable = true;
       wakatime.enable = lib.mkForce false;
+      nvim-jdtls = {
+        enable = lib.mkForce true;
+        jdtLanguageServerPackage = pkgs.jdt-language-server;
+      };
     };
     copilot.enable = false;
     cloak.enable = false;

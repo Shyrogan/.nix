@@ -1,7 +1,7 @@
 { inputs, config, lib, pkgs, ... }: with lib;
 let
   cfg = config.wayland.windowManager.hyprland;
-  inherit (inputs) hyprland hyprland-plugins;
+  inherit (inputs) hyprland swts;
   hyprPkgs = hyprland.packages.${pkgs.system};
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
@@ -25,7 +25,7 @@ in {
 
       general = {
         border_size = 0;
-        gaps_out = "12,16,12,16";
+        gaps_out = "12,8,12,8";
       };
 
       bind = [
@@ -115,6 +115,8 @@ in {
       gestures = {
         workspace_swipe = true;
       };
+
+      exec-once = ["swts"];
     };
   };
   services = mkIf cfg.enable {
@@ -128,6 +130,7 @@ in {
       hyprshot wl-clipboard libdbusmenu
       brightnessctl pulseaudio smile 
       mission-center myxer
+      swts.packages.${pkgs.system}.default
     ];
   };
 }

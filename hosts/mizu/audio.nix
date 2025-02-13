@@ -5,6 +5,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
 
     # Config for Zenbook's speakers
     extraConfig.pipewire."99-speaker-routing" = {
