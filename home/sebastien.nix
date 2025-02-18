@@ -48,11 +48,12 @@ in {
       vlc
       sshfs
 
-      prismlauncher
       zen-browser.packages.${pkgs.system}.default
 
       jetbrains.datagrip
       just
+
+      modrinth-app
     ];
 
     stateVersion = "24.05";
