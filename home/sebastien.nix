@@ -52,6 +52,7 @@ in {
       zen-browser.packages.${pkgs.system}.default
 
       jetbrains.datagrip
+      jetbrains.webstorm
       just
     ];
 
