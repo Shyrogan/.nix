@@ -30,7 +30,6 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      extraPackages = with pkgs.rocmPackages; [ clr clr.icd rocminfo rocm-runtime ];
     };
   };
 
