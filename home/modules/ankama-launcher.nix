@@ -5,7 +5,7 @@ let
   version = "0.1.0";
   src = pkgs.fetchurl {
     url = "https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage";
-    hash = "sha256-KoaAQh3V7mdSR0WAjHP7JK1vlcsp2Bo9+J9qsX1GIkA=";
+    hash = "sha256-dkY7B5enC3j1B2uiXw5HXcmmrfEXQpOZkb+94q6iixk=";
   };
   content = pkgs.appimageTools.extractType2 { inherit pname version src; };
 in {

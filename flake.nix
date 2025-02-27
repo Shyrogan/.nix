@@ -31,7 +31,7 @@
 
     # Applications
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/6d10fc0c871a93164bd473fe7de9dbcc41439799";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neve = {

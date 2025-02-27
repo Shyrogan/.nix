@@ -33,10 +33,6 @@
     };
   };
 
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}"
-  ];
-
   # Users for my laptop
   users = {
     mutableUsers = true;
