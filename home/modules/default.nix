@@ -10,7 +10,8 @@
     ./ghostty.nix
     ./hyprland.nix
     ./niri.nix
-    ./nixvim.nix
+    #./nixvim.nix
+    ./nvf
     ./nushell.nix
     ./wezterm.nix
     ./zellij.nix

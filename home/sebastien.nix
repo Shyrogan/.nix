@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }: let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   inherit (inputs) stylix zen-browser;
 in {
   nixpkgs.config.allowUnfree = true;
@@ -52,7 +56,6 @@ in {
       zen-browser.packages.${pkgs.system}.default
 
       jetbrains.datagrip
-      jetbrains.webstorm
       just
     ];
 
@@ -62,20 +65,15 @@ in {
   # Programs
   programs = {
     ankama-launcher.enable = true;
-    #firefox.enable = true;
     nushell.enable = true;
     fuzzel.enable = true;
-    nixvim.enable = true;
     zathura.enable = true;
     zellij = {
       enable = true;
       nuShellIntegration = true;
     };
     ghostty.enable = true;
-  };
-
-  services = {
-    ollama.enable = true;
+    nvf.enable = true;
   };
 
   xdg = {
@@ -91,4 +89,3 @@ in {
   };
   wayland.windowManager.hyprland.enable = true;
 }
-

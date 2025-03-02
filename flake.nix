@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
-      url = "github:nix-community/home-manager" ;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -27,17 +27,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    nvf.url = "github:notashelf/nvf";
     swts.url = "github:Shyrogan/swts";
 
     # Applications
-    nixvim = {
-      url = "github:nix-community/nixvim/6d10fc0c871a93164bd473fe7de9dbcc41439799";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    neve = {
-      url = "github:Redyf/Neve";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,6 +52,7 @@
     home-manager,
     nixos-hardware,
     nix-gaming,
+    nvf,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystemPassThrough (
@@ -96,6 +90,7 @@
 
             modules = [
               agenix.homeManagerModules.default
+              nvf.homeManagerModules.default
               ./home/sebastien.nix
             ];
           };

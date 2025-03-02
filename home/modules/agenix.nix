@@ -1,4 +1,3 @@
-{ config, ... }: let
-in {
+{config, ...}: {
   age.secretsDir = "${config.home.homeDirectory}/agenix";
 }

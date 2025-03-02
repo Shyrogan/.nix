@@ -21,7 +21,6 @@ in
         };
       };
     };
-    extraConfigLuaPost = ''vim.cmd [[ colorscheme gruvbox ]]'';
     plugins = {
       copilot-vim.enable = lib.mkForce false;
       copilot-chat.enable = lib.mkForce false;
@@ -39,7 +38,6 @@ in
             client.server_capabilities.documentRangeFormattingProvider = false
           '';
         };
-        biome.enable = true;
         rust_analyzer = let f = fenix.packages.${pkgs.system}; in {
           package = f.rust-analyzer;
           cargoPackage = f.stable.cargo;
@@ -49,7 +47,6 @@ in
         tinymist.enable = true;
         svelte.enable = true;
         tailwindcss.enable = true;
-        jdtls.enable = true;
       };
       typst-vim = {
         enable = true;
@@ -70,6 +67,7 @@ in
     copilot.enable = false;
     cloak.enable = false;
     nvterm.enable = false;
+    ultimate-autopair.enable = false;
   };
   home.sessionVariables = {
     EDITOR = "nvim";
