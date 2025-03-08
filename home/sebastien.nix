@@ -22,6 +22,7 @@ in {
       name = "JetBrainsMono Nerd Font";
       package = pkgs.nerd-fonts.jetbrains-mono;
     };
+    targets.nvf.enable = false;
   };
 
   # User info
@@ -54,9 +55,7 @@ in {
 
       prismlauncher
       zen-browser.packages.${pkgs.system}.default
-
-      jetbrains.datagrip
-      just
+      lazygit
     ];
 
     stateVersion = "24.05";

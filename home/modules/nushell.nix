@@ -1,4 +1,9 @@
-{ config, lib, ... }: with lib; let
+{
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.programs.nushell;
 in {
   age.secrets.env.file = ../../secrets/env.age;
@@ -15,9 +20,9 @@ in {
       shellAliases = {
         "ll" = "ls -l";
         "lla" = "ls -la";
-        "nd" = "nix develop --no-pure-eval";
+        "lg" = "lazygit";
       };
-      envFile.text= ''
+      envFile.text = ''
         source ${config.age.secrets.env.path}
       '';
     };
@@ -48,6 +53,12 @@ in {
     };
     # Nix your shell
     nix-your-shell = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
+
+    # Direnv
+    direnv = {
       enable = true;
       enableNushellIntegration = true;
     };

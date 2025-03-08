@@ -10,6 +10,5 @@
       base05 = colors.base06;
       base06 = colors.base05;
     };
-    transparent = false;
   };
 }
