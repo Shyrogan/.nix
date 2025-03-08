@@ -1,5 +1,11 @@
-{ inputs, config, lib, pkgs, ... }: with lib;
-let
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.wayland.windowManager.hyprland;
   inherit (inputs) hyprland swts;
   hyprPkgs = hyprland.packages.${pkgs.system};
@@ -8,7 +14,7 @@ in {
     package = hyprPkgs.hyprland;
     systemd = {
       enable = true;
-      variables = [ "--all" ];
+      variables = ["--all"];
     };
     xwayland.enable = true;
     plugins = [
@@ -16,8 +22,16 @@ in {
 
     settings = let
       workspaces = [
-        ["Ampersand" 1] ["Eacute" 2] ["Quotedbl" 3] ["Apostrophe" 4] ["Parenleft" 5] ["Minus" 6] 
-        ["Egrave" 7] ["Underscore" 8] ["Ccedilla" 9] ["Agrave" 10]
+        ["Ampersand" 1]
+        ["Eacute" 2]
+        ["Quotedbl" 3]
+        ["Apostrophe" 4]
+        ["Parenleft" 5]
+        ["Minus" 6]
+        ["Egrave" 7]
+        ["Underscore" 8]
+        ["Ccedilla" 9]
+        ["Agrave" 10]
       ];
       motions = [["h" "l"] ["j" "d"] ["k" "u"] ["l" "r"]];
     in {
@@ -28,36 +42,43 @@ in {
         gaps_out = "12,8,12,8";
       };
 
-      bind = [
-        "$mod, Return, exec, ghostty"
-        "$mod, X, killactive"
-        "$mod, Space, exec, fuzzel"
-        "$mod, F, fullscreen, active"
-        "$mod, V, togglefloating"
-      ] ++
-      # For each workspaces, creates bindings
-      foldl' (acc: w: acc ++ [
-        "$mod, ${builtins.elemAt w 0}, workspace, ${toString (builtins.elemAt w 1)}"
-        "Shift+$mod, ${builtins.elemAt w 0}, movetoworkspace, ${toString (builtins.elemAt w 1)}"
-      ]) [] workspaces
-      ++
-      foldl' (acc: m: acc ++ [
-        "$mod, ${builtins.elemAt m 0}, movefocus, ${builtins.elemAt m 1}"
-        "Shift+$mod, ${builtins.elemAt m 0}, movewindow, ${builtins.elemAt m 1}"
-      ]) [] motions
-      ++ [
-        "Shift+$mod, S, exec, hyprshot -m region -o $HOME/Pictures/Screenshots/"
-        "$mod, Print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/"
-        ", Print, exec, hyprshot -m window -o $HOME/Pictures/Screenshots/"
-        ", XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-        ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-        ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +10%"
-        ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -10%"
-        ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
-        ", XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle && brightnessctl -d platform::micmute set $((1 - $(brightnessctl -d platform::micmute g)))"
+      bind =
+        [
+          "$mod, Return, exec, ghostty"
+          "$mod, X, killactive"
+          "$mod, Space, exec, fuzzel"
+          "$mod, F, fullscreen, active"
+          "$mod, V, togglefloating"
+        ]
+        ++
+        # For each workspaces, creates bindings
+        foldl' (acc: w:
+          acc
+          ++ [
+            "$mod, ${builtins.elemAt w 0}, workspace, ${toString (builtins.elemAt w 1)}"
+            "Shift+$mod, ${builtins.elemAt w 0}, movetoworkspace, ${toString (builtins.elemAt w 1)}"
+          ]) []
+        workspaces
+        ++ foldl' (acc: m:
+          acc
+          ++ [
+            "$mod, ${builtins.elemAt m 0}, movefocus, ${builtins.elemAt m 1}"
+            "Shift+$mod, ${builtins.elemAt m 0}, movewindow, ${builtins.elemAt m 1}"
+          ]) []
+        motions
+        ++ [
+          "Shift+$mod, S, exec, hyprshot -m region -o $HOME/Pictures/Screenshots/"
+          "$mod, Print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/"
+          ", Print, exec, hyprshot -m window -o $HOME/Pictures/Screenshots/"
+          ", XF86MonBrightnessUp, exec, brightnessctl s 10%+"
+          ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+          ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +10%"
+          ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -10%"
+          ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
+          ", XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle && brightnessctl -d platform::micmute set $((1 - $(brightnessctl -d platform::micmute g)))"
           #", XF86Launch1, hyprexpo:expo, toggle"
-        "$mod, Colon, exec, smile"
-      ];
+          "$mod, Colon, exec, smile"
+        ];
 
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -69,7 +90,6 @@ in {
       bindl = [
         '', switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"''
         '', switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1,highres,auto-left,1.6"''
-        
       ];
 
       input = {
@@ -97,7 +117,7 @@ in {
         "HDMI-A-1,preferred,auto,1.0"
         "DP-1,preferred,auto-right,1.0,transform,1"
       ];
-      
+
       xwayland = {
         force_zero_scaling = true;
       };
@@ -126,11 +146,17 @@ in {
     sessionVariables = mkIf cfg.enable {
       NIXOS_OZONE_WL = "1";
     };
-    packages = with pkgs; optionals cfg.enable [
-      hyprshot wl-clipboard libdbusmenu
-      brightnessctl pulseaudio smile 
-      mission-center myxer
-      swts.packages.${pkgs.system}.default
-    ];
+    packages = with pkgs;
+      optionals cfg.enable [
+        hyprshot
+        wl-clipboard
+        libdbusmenu
+        brightnessctl
+        pulseaudio
+        smile
+        mission-center
+        myxer
+        swts.packages.${pkgs.system}.default
+      ];
   };
 }

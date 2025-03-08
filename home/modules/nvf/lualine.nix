@@ -80,4 +80,9 @@
       ''
     ];
   };
+  refresh = {
+    statusline = 100;
+    tabline = 100;
+    winbar = 100;
+  };
 }

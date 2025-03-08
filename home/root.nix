@@ -1,4 +1,8 @@
-{ inputs, pkgs, ... }: let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   inherit (inputs) stylix;
 in {
   nixpkgs.config.allowUnfree = true;
@@ -21,7 +25,7 @@ in {
     username = "root";
     homeDirectory = "/root";
 
-    packages = with pkgs; [ dconf ];
+    packages = with pkgs; [dconf];
 
     stateVersion = "24.05";
   };
@@ -32,4 +36,3 @@ in {
     nixvim.enable = true;
   };
 }
-
