@@ -28,7 +28,6 @@
       inputs.hyprland.follows = "hyprland";
     };
     nvf.url = "github:notashelf/nvf";
-    swts.url = "github:Shyrogan/swts";
 
     # Applications
     nix-gaming = {

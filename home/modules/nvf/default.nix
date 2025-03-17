@@ -33,6 +33,8 @@ in {
         # Work
         python.enable = true;
         python.format.type = "ruff";
+        # DevOps
+        helm.enable = true;
       };
       formatter.conform-nvim.enable = true;
       autocomplete.blink-cmp.enable = true;
@@ -70,6 +72,39 @@ in {
       lazy.plugins = {
         "avante.nvim" = import ./plugins/avante.nix pkgs;
         "oil.nvim" = import ./plugins/oil.nix pkgs;
+      };
+      options = {
+        # Set tabs to 2 spaces
+        tabstop = 2;
+        softtabstop = 2;
+        showtabline = 2;
+        expandtab = true;
+
+        # Enable auto indenting and set it to spaces
+        smartindent = true;
+        shiftwidth = 2;
+
+        # Enable smart indenting (see https://stackoverflow.com/questions/1204149/smart-wrap-in-vim)
+        breakindent = true;
+
+        # Enable incremental searching
+        hlsearch = true;
+        incsearch = true;
+
+        # Enable ignorecase + smartcase for better searching
+        ignorecase = true;
+        smartcase = true; # Don't ignore case with capitals
+        grepprg = "rg --vimgrep";
+        grepformat = "%f:%l:%c:%m";
+
+        # Decrease updatetime
+        updatetime = 50; # faster completion (4000ms default)
+
+        # Enable text wrap
+        wrap = true;
+
+        list = true; # Show invisible characters (tabs, eol, ...)
+        listchars = "eol:↲,tab:··,lead:·,space: ,trail:•,extends:→,precedes:←,nbsp:␣";
       };
     };
   };

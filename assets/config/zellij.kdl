@@ -419,3 +419,5 @@ pane_frames false
 // Default: true (if the host terminal supports it)
 //
 // support_kitty_keyboard_protocol fals
+
+show_startup_tips false

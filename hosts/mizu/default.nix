@@ -1,21 +1,22 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./audio.nix
     ./bluetooth.nix
     ./virtualisation.nix
     ./hardware.nix
-    ./kernel.nix
+    ./wifi.nix
+    ./kernel
   ];
+
+  age.identityPaths = ["/home/sebastien/.ssh/id_ed25519"];
 
   networking = {
     hostName = "mizu";
-    networkmanager.enable = true;
   };
   environment = {
     variables = {
       ROC_ENABLE_PRE_VEGA = "1";
     };
-    systemPackages = with pkgs; [ networkmanagerapplet ];
   };
 
   virtualisation.docker.enable = true;
@@ -25,11 +26,11 @@
     steam.enable = true;
   };
 
-  hardware = {
-    amdgpu.opencl.enable = true;
-    graphics = {
+  services = {
+    ollama = {
       enable = true;
-      enable32Bit = true;
+      acceleration = "rocm";
+      rocmOverrideGfx = "11.0.3";
     };
   };
 
@@ -39,8 +40,8 @@
     users = {
       sebastien = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "audio" "docker" "dialout" ];
-        packages = with pkgs; [ nushell ];
+        extraGroups = ["wheel" "audio" "docker" "dialout"];
+        packages = with pkgs; [nushell];
         shell = pkgs.nushell;
       };
       root = {

@@ -7,7 +7,7 @@
 }:
 with lib; let
   cfg = config.wayland.windowManager.hyprland;
-  inherit (inputs) hyprland swts;
+  inherit (inputs) hyprland;
   hyprPkgs = hyprland.packages.${pkgs.system};
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
@@ -135,8 +135,6 @@ in {
       gestures = {
         workspace_swipe = true;
       };
-
-      exec-once = ["swts"];
     };
   };
   services = mkIf cfg.enable {
@@ -156,7 +154,6 @@ in {
         smile
         mission-center
         myxer
-        swts.packages.${pkgs.system}.default
       ];
   };
 }

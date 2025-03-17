@@ -56,6 +56,8 @@ in {
       prismlauncher
       zen-browser.packages.${pkgs.system}.default
       lazygit
+
+      jetbrains.datagrip
     ];
 
     stateVersion = "24.05";
@@ -63,7 +65,6 @@ in {
 
   # Programs
   programs = {
-    ankama-launcher.enable = true;
     nushell.enable = true;
     fuzzel.enable = true;
     zathura.enable = true;
