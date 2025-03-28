@@ -70,14 +70,12 @@ in {
           "Shift+$mod, S, exec, hyprshot -m region -o $HOME/Pictures/Screenshots/"
           "$mod, Print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/"
           ", Print, exec, hyprshot -m window -o $HOME/Pictures/Screenshots/"
-          ", XF86MonBrightnessUp, exec, brightnessctl s 10%+"
-          ", XF86MonBrightnessDown, exec, brightnessctl s 10%-"
-          ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +10%"
-          ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -10%"
-          ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
-          ", XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle && brightnessctl -d platform::micmute set $((1 - $(brightnessctl -d platform::micmute g)))"
-          #", XF86Launch1, hyprexpo:expo, toggle"
-          "$mod, Colon, exec, smile"
+          ", XF86MonBrightnessUp, exec, lightctl up"
+          ", XF86MonBrightnessDown, exec, lightctl down"
+          ", XF86AudioRaiseVolume, exec, volumectl -u up"
+          ", XF86AudioLowerVolume, exec, volumectl -u down"
+          ", XF86AudioMute, exec, volumectl toggle-mute"
+          ", XF86AudioMicMute, exec, volumectl -m toggle-mute"
         ];
 
       bindm = [
@@ -138,7 +136,9 @@ in {
     };
   };
   services = mkIf cfg.enable {
+    avizo.enable = true;
     hyprpaper.enable = true;
+    mako.enable = true;
   };
   home = {
     sessionVariables = mkIf cfg.enable {
