@@ -27,7 +27,10 @@ in {
         # Web
         css.enable = true;
         html.enable = true;
-        ts.enable = true;
+        ts = {
+          enable = true;
+          format.package = pkgs.prettierd;
+        };
         svelte.enable = true;
         tailwind.enable = true;
         # Work
@@ -51,6 +54,7 @@ in {
       ui = import ./ui.nix;
       statusline.lualine = import ./lualine.nix;
       tabline.nvimBufferline = import ./plugins/bufferline.nix;
+      git.gitsigns.enable = true;
       binds.whichKey = {
         enable = true;
       };
