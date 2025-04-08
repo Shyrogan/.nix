@@ -67,9 +67,9 @@ in {
           ]) []
         motions
         ++ [
-          "Shift+$mod, S, exec, hyprshot -m region -o $HOME/Pictures/Screenshots/"
-          "$mod, Print, exec, hyprshot -m output -o $HOME/Pictures/Screenshots/"
-          ", Print, exec, hyprshot -m window -o $HOME/Pictures/Screenshots/"
+          "Shift+$mod, S, exec, hyprshot --freeze -m region -o $HOME/Pictures/Screenshots/"
+          "$mod, Print, exec, hyprshot --freeze -m output -o $HOME/Pictures/Screenshots/"
+          ", Print, exec, hyprshot --freeze -m window -o $HOME/Pictures/Screenshots/"
           ", XF86MonBrightnessUp, exec, lightctl up"
           ", XF86MonBrightnessDown, exec, lightctl down"
           ", XF86AudioRaiseVolume, exec, volumectl -u up"
