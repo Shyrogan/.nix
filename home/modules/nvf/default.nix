@@ -27,12 +27,9 @@ in {
         # Web
         css.enable = true;
         html.enable = true;
-        ts = {
-          enable = true;
-          format.package = pkgs.prettierd;
-        };
         svelte.enable = true;
         tailwind.enable = true;
+        ts.enable = true;
         # Work
         python.enable = true;
         python.format.type = "ruff";
@@ -71,6 +68,30 @@ in {
           action = "<cmd>w<cr>";
           mode = ["n" "v" "x"];
           desc = "Save buffer";
+        }
+        {
+          key = "<C-j>";
+          action = "<cmd>wincmd j<cr>";
+          mode = ["n" "v" "x"];
+          desc = "Move to pane below";
+        }
+        {
+          key = "<C-k>";
+          action = "<cmd>wincmd k<cr>";
+          mode = ["n" "v" "x"];
+          desc = "Move to pane above";
+        }
+        {
+          key = "<C-l>";
+          action = "<cmd>wincmd l<cr>";
+          mode = ["n" "v" "x"];
+          desc = "Move to pane to the right";
+        }
+        {
+          key = "<C-h>";
+          action = "<cmd>wincmd h<cr>";
+          mode = ["n" "v" "x"];
+          desc = "Move to pane to the left";
         }
       ];
       lazy.plugins = {
