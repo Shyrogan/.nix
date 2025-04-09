@@ -23,7 +23,22 @@ in {
         enableTreesitter = true;
 
         nix.enable = true;
-        rust.enable = true;
+        rust = {
+          enable = true;
+          crates = {
+            enable = true;
+            codeActions = true;
+          };
+          lsp.opts = ''
+            ['rust-analyzer'] = {
+              cargo = {allFeature = true},
+              checkOnSave = true,
+              procMacro = {
+                enable = true,
+              },
+            },
+          '';
+        };
         # Web
         css.enable = true;
         html.enable = true;
