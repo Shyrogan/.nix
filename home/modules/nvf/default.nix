@@ -29,15 +29,23 @@ in {
             enable = true;
             codeActions = true;
           };
-          lsp.opts = ''
-            ['rust-analyzer'] = {
-              cargo = {allFeature = true},
-              checkOnSave = true,
-              procMacro = {
-                enable = true,
+          lsp = {
+            enable = true;
+            opts = ''
+              ['rust-analyzer'] = {
+                cargo = { allFeatures = true },
+                checkOnSave = true,
+                check = {
+                  enable = true,
+                  command = 'clippy',
+                  features = 'all',
+                },
+                procMacro = {
+                  enable = true,
+                },
               },
-            },
-          '';
+            '';
+          };
         };
         # Web
         css.enable = true;
