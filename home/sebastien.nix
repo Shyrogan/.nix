@@ -58,6 +58,8 @@ in {
       lazygit
 
       jetbrains.datagrip
+
+      uxplay
     ];
 
     stateVersion = "24.05";
@@ -68,10 +70,7 @@ in {
     nushell.enable = true;
     fuzzel.enable = true;
     zathura.enable = true;
-    zellij = {
-      enable = true;
-      nuShellIntegration = true;
-    };
+    zellij.enable = true;
     ghostty.enable = true;
     nvf.enable = true;
   };

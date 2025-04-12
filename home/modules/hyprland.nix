@@ -105,9 +105,7 @@ in {
       };
 
       animation = [
-        "workspaces, 1, 2, default, slidevert"
-        "windows, 1, 2, default, slide"
-        "fade, 0"
+        "global, 0"
       ];
 
       monitor = [
