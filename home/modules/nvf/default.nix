@@ -58,6 +58,16 @@ in {
         python.format.type = "ruff";
         # DevOps
         helm.enable = true;
+
+        typst = {
+          enable = true;
+          extensions.typst-preview-nvim = {
+            enable = true;
+            setupOpts = {
+              open_cmd = "zen %s -P typst-preview --class typst-preview";
+            };
+          };
+        };
       };
       formatter.conform-nvim.enable = true;
       autocomplete.blink-cmp.enable = true;
