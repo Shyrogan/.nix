@@ -12,6 +12,21 @@
 
   networking = {
     hostName = "mizu";
+    firewall = {
+      enable = true;
+      allowedTCPPortRanges = [
+        {
+          from = 30000;
+          to = 60000;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 30000;
+          to = 60000;
+        }
+      ];
+    };
   };
   environment = {
     variables = {
@@ -29,8 +44,16 @@
   services = {
     ollama = {
       enable = true;
-      acceleration = "rocm";
-      rocmOverrideGfx = "11.0.3";
+    };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        workstation = true;
+        userServices = true;
+      };
     };
   };
 
@@ -41,7 +64,19 @@
       sebastien = {
         isNormalUser = true;
         extraGroups = ["wheel" "audio" "docker" "dialout"];
-        packages = with pkgs; [nushell];
+        packages = with pkgs; [
+          # Default shell
+          nushell
+
+          # GPU rocm
+          pkgs.rocmPackages.rpp
+          pkgs.rocmPackages.clr
+          pkgs.rocmPackages.hipcc
+          pkgs.rocmPackages.rocm-smi
+
+          # UxPlay needs to be installed on Host
+          uxplay
+        ];
         shell = pkgs.nushell;
       };
       root = {
