@@ -131,6 +131,9 @@ in {
         "avante.nvim" = import ./plugins/avante.nix pkgs;
         "oil.nvim" = import ./plugins/oil.nix pkgs;
       };
+      navigation = {
+        harpoon = import ./plugins/harpoon.nix;
+      };
       options = {
         # Set tabs to 2 spaces
         tabstop = 2;
@@ -166,4 +169,4 @@ in {
       };
     };
   };
-}
+};
