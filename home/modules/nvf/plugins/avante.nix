@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  enabled = true;
+  enabled = false;
   package = pkgs.vimPlugins.avante-nvim;
   setupModule = "avante";
   setupOpts = {

@@ -1,5 +1,5 @@
 {
-  enable = true;
+  enable = false;
   sectionSeparator = {
     left = "";
     right = "";

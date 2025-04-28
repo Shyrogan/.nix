@@ -1,4 +1,5 @@
 {
+  enable = true;
   mappings = {
     file1 = "<C-&>";
     file2 = "<C-é>";
