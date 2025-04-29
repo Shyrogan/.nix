@@ -1,9 +1,9 @@
 {
   enable = true;
   mappings = {
-    file1 = "<C-&>";
-    file2 = "<C-é>";
-    file3 = ''<C-">'';
-    file4 = "<C-'>";
+    file1 = "&";
+    file2 = "é";
+    file3 = ''"'';
+    file4 = "'";
   };
 }
