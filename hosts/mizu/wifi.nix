@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   age.secrets.wifi.file = ../../secrets/wifi.age;
 
   networking = {
@@ -18,6 +14,10 @@
     #     AutoConnect = true;
     #   };
     # };
+  };
+  systemd.services = {
+    # Disable the shit check that takes 8 seconds of boot time.
+    NetworkManager-wait-online.enable = false;
   };
   # environment.systemPackages = [pkgs.iwdgui];
   # networking.wireless = {

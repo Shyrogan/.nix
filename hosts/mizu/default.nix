@@ -14,18 +14,6 @@
     hostName = "mizu";
     firewall = {
       enable = true;
-      allowedTCPPortRanges = [
-        {
-          from = 30000;
-          to = 60000;
-        }
-      ];
-      allowedUDPPortRanges = [
-        {
-          from = 30000;
-          to = 60000;
-        }
-      ];
     };
   };
   environment = {
@@ -34,27 +22,9 @@
     };
   };
 
-  virtualisation.docker.enable = true;
-
   programs = {
     hyprland.enable = true;
     steam.enable = true;
-  };
-
-  services = {
-    ollama = {
-      enable = true;
-    };
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      publish = {
-        enable = true;
-        addresses = true;
-        workstation = true;
-        userServices = true;
-      };
-    };
   };
 
   # Users for my laptop
