@@ -70,6 +70,11 @@ in {
     stateVersion = "24.05";
   };
 
+  services = {
+    podman.enable = true;
+    ollama.enable = true;
+  };
+
   # Programs
   programs = {
     nushell.enable = true;
