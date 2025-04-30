@@ -12,5 +12,11 @@
     #     patch = ./v5-1-6-Revert-wifi-mt76-mt7925-Update-mt7925_mcu_uni_-tx-rx-_ba-for-MLO.patch;
     #   }
     # ];
+    kernelPatches = [
+      {
+        name = "[PATCH] drm/amd: Revert patch that causes hang in S4";
+        patch = ./0001-drm-amd-Revert-patch-that-causes-hang-in-S4.patch;
+      }
+    ];
   };
 }

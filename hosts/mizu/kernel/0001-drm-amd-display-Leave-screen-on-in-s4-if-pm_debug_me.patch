@@ -1,0 +1,35 @@
+From 1dd11187fb8097c88e6d2b56445aea9c5e40bccb Mon Sep 17 00:00:00 2001
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Tue, 29 Apr 2025 11:54:47 -0500
+Subject: [PATCH] drm/amd/display: Leave screen on in s4 if pm_debug_messages
+ is enabled
+
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index 536f73131c2d1..96ada04821dcd 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -82,6 +82,7 @@
+ #include <linux/component.h>
+ #include <linux/dmi.h>
+ #include <linux/sort.h>
++#include <linux/suspend.h>
+ 
+ #include <drm/display/drm_dp_mst_helper.h>
+ #include <drm/display/drm_hdmi_helper.h>
+@@ -3463,7 +3464,7 @@ static int dm_resume(struct amdgpu_ip_block *ip_block)
+ 	}
+ 
+ 	/* leave display off for S4 sequence */
+-	if (adev->in_s4)
++	if (adev->in_s4 && !pm_debug_messages_should_print())
+ 		return 0;
+ 
+ 	/* Recreate dc_state - DC invalidates it when setting power state to S3. */
+-- 
+2.43.0
+

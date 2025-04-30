@@ -43,9 +43,6 @@
           pkgs.rocmPackages.clr
           pkgs.rocmPackages.hipcc
           pkgs.rocmPackages.rocm-smi
-
-          # UxPlay needs to be installed on Host
-          uxplay
         ];
         shell = pkgs.nushell;
       };

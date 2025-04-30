@@ -1,0 +1,65 @@
+From b2c385de48f932306fb948d9bd44f17237ee5985 Mon Sep 17 00:00:00 2001
+From: Nicholas Roth <nicholas@rothemail.net>
+Date: Wed, 30 Apr 2025 00:46:32 -0400
+Subject: [PATCH] drm/amd: Revert patch that causes hang in S4
+
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c           | 11 ++---------
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |  4 ----
+ 2 files changed, 2 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+index 24ee4710f807..ea4f24e66f18 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+@@ -2604,6 +2604,7 @@ static int amdgpu_pmops_freeze(struct device *dev)
+ 	int r;
+ 
+ 	r = amdgpu_device_suspend(drm_dev, true);
++    adev->in_s4 = false;
+ 	if (r)
+ 		return r;
+ 
+@@ -2615,13 +2616,8 @@ static int amdgpu_pmops_freeze(struct device *dev)
+ static int amdgpu_pmops_thaw(struct device *dev)
+ {
+ 	struct drm_device *drm_dev = dev_get_drvdata(dev);
+-	struct amdgpu_device *adev = drm_to_adev(drm_dev);
+-	int r;
+-
+-	r = amdgpu_device_resume(drm_dev, true);
+-	adev->in_s4 = false;
+ 
+-	return r;
++	return amdgpu_device_resume(drm_dev, true);
+ }
+ 
+ static int amdgpu_pmops_poweroff(struct device *dev)
+@@ -2634,9 +2630,6 @@ static int amdgpu_pmops_poweroff(struct device *dev)
+ static int amdgpu_pmops_restore(struct device *dev)
+ {
+ 	struct drm_device *drm_dev = dev_get_drvdata(dev);
+-	struct amdgpu_device *adev = drm_to_adev(drm_dev);
+-
+-	adev->in_s4 = false;
+ 
+ 	return amdgpu_device_resume(drm_dev, true);
+ }
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index 536f73131c2d..d47128165f04 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -3462,10 +3462,6 @@ static int dm_resume(struct amdgpu_ip_block *ip_block)
+ 		return 0;
+ 	}
+ 
+-	/* leave display off for S4 sequence */
+-	if (adev->in_s4)
+-		return 0;
+-
+ 	/* Recreate dc_state - DC invalidates it when setting power state to S3. */
+ 	dc_state_release(dm_state->context);
+ 	dm_state->context = dc_state_create(dm->dc, NULL);
+-- 
+2.49.0
+
