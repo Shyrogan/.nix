@@ -102,6 +102,10 @@ in {
           render_power = 3;
           color = lib.mkForce "rgba(00000045)";
         };
+
+        blur = {
+          passes = 4;
+        };
       };
 
       animation = [

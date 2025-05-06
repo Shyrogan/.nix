@@ -69,6 +69,10 @@ in {
           };
         };
       };
+      assistant.copilot = {
+        enable = true;
+        cmp.enable = true;
+      };
       formatter.conform-nvim.enable = true;
       autocomplete.blink-cmp.enable = true;
       comments.comment-nvim.enable = true;
@@ -98,6 +102,7 @@ in {
       lazy.plugins = {
         "avante.nvim" = import ./plugins/avante.nix pkgs;
         "oil.nvim" = import ./plugins/oil.nix pkgs;
+        "mini.colors" = import ./plugins/mini-colors.nix pkgs;
       };
       navigation = {
         harpoon = import ./plugins/harpoon.nix;

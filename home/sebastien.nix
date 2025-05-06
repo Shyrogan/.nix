@@ -15,8 +15,8 @@ in {
   # Styling
   stylix = {
     enable = true;
-    base16Scheme = ../assets/config/gruvbox-dark-hard-base16.yml;
-    image = ../assets/wallpaper_loris.png;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+    image = ../assets/everforest/fog_forest_alt_2.png;
     polarity = "dark";
     fonts.monospace = {
       name = "JetBrainsMono Nerd Font";
@@ -63,8 +63,6 @@ in {
       lazygit
 
       jetbrains.datagrip
-
-      uxplay
     ];
 
     stateVersion = "24.05";
@@ -83,6 +81,7 @@ in {
     zellij.enable = true;
     ghostty.enable = true;
     nvf.enable = true;
+    spicetify.enable = true;
   };
 
   xdg = {

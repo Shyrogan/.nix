@@ -1,4 +1,9 @@
-{ inputs, config, lib, ... }: with lib; let
+{
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.programs.ghostty;
 in {
   #options.programs.ghostty.enable = mkEnableOption "Enable Ghostty terminal";
@@ -15,7 +20,8 @@ in {
       window-decoration = false;
       window-padding-x = 8;
       window-padding-y = 12;
-      theme = "GruvboxDark";
+
+      background-opacity = 0.8;
     };
   };
 }
