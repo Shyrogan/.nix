@@ -15,7 +15,7 @@
     kernelPatches = [
       {
         name = "[PATCH] drm/amd: Revert patch that causes hang in S4";
-        patch = ./0001-drm-amd-Revert-patch-that-causes-hang-in-S4.patch;
+        patch = ./0001-Possible-fix-by-Mario-to-add-amdgpu_dm_hpd_fini-befo.patch;
       }
     ];
   };

@@ -27,6 +27,10 @@ in {
       package = pkgs.bibata-cursors;
       size = 24;
     };
+    targets.gtk.extraCss = ''
+      @define-color view_bg_color rgb(0.176470, 0.207843, 0.231372, 0.8);
+      @define-color window_bg_color rgb(0.176470, 0.207843, 0.231372, 0.8);
+    '';
     targets.nvf.enable = false;
   };
 
