@@ -104,7 +104,7 @@ in {
         };
 
         blur = {
-          passes = 4;
+          enabled = false;
         };
       };
 

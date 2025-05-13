@@ -20,8 +20,6 @@ in {
       window-decoration = false;
       window-padding-x = 8;
       window-padding-y = 12;
-
-      background-opacity = 0.8;
     };
   };
 }
