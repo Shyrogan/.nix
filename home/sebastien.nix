@@ -63,6 +63,10 @@ in {
       lazygit
 
       jetbrains.datagrip
+
+      code-cursor
+
+      gnome-font-viewer
     ];
 
     stateVersion = "24.05";

@@ -12,14 +12,13 @@ in {
     enableManpages = true;
     settings.vim = {
       enableLuaLoader = true;
-      useSystemClipboard = true;
+      clipboard.enable = true;
       undoFile.enable = true;
       theme = theme_provider.withColors colors;
       languages = {
         enableDAP = true;
         enableExtraDiagnostics = true;
         enableFormat = true;
-        enableLSP = true;
         enableTreesitter = true;
 
         nix.enable = true;
@@ -68,10 +67,6 @@ in {
             };
           };
         };
-      };
-      assistant.copilot = {
-        enable = true;
-        cmp.enable = true;
       };
       formatter.conform-nvim.enable = true;
       autocomplete.blink-cmp.enable = true;
