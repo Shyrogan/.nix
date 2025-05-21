@@ -86,6 +86,7 @@ in {
     ghostty.enable = true;
     nvf.enable = true;
     spicetify.enable = true;
+    helix.enable = true;
   };
 
   xdg = {

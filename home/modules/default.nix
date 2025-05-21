@@ -8,6 +8,7 @@
     ./dconf.nix
     ./fonts.nix
     ./ghostty.nix
+    ./helix.nix
     ./hyprland.nix
     ./niri.nix
     #./nixvim.nix
