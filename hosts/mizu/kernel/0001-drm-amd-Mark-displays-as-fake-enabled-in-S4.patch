@@ -1,0 +1,59 @@
+From 95e6244745e56e6621e3332db14bd1d26b4a42df Mon Sep 17 00:00:00 2001
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Thu, 22 May 2025 12:52:07 -0500
+Subject: [PATCH] drm/amd: Mark displays as fake enabled in S4
+
+commit 68bfdc8dc0a1a ("drm/amd: Keep display off while going into S4")
+turned off display IP while going into S4 but this caused regressions
+and was reverted.
+
+Instead of turning off display IP mark displays as fake enabled so there
+is a dummy sink. When restoring the hibernation image report as no longer
+in S4 so that displays can be trained again.
+
+Link: https://gitlab.freedesktop.org/drm/amd/-/issues/4155
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c           | 3 +++
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 4 +++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+index 72c807f5822e3..0066c52955918 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
+@@ -2629,6 +2629,9 @@ static int amdgpu_pmops_poweroff(struct device *dev)
+ static int amdgpu_pmops_restore(struct device *dev)
+ {
+ 	struct drm_device *drm_dev = dev_get_drvdata(dev);
++	struct amdgpu_device *adev = drm_to_adev(drm_dev);
++
++	adev->in_s4 = false;
+ 
+ 	return amdgpu_device_resume(drm_dev, true);
+ }
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index c876f78618cf1..2e9d12e8114f9 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -3520,6 +3520,8 @@ static int dm_resume(struct amdgpu_ip_block *ip_block)
+ 		 */
+ 		if (aconnector->mst_root)
+ 			continue;
++		if (adev->in_s4)
++			aconnector->fake_enable = true;
+ 
+ 		guard(mutex)(&aconnector->hpd_lock);
+ 		if (!dc_link_detect_connection_type(aconnector->dc_link, &new_connection_type))
+@@ -3537,7 +3539,7 @@ static int dm_resume(struct amdgpu_ip_block *ip_block)
+ 			}
+ 		}
+ 
+-		if (aconnector->fake_enable && aconnector->dc_link->local_sink)
++		if (!adev->in_s4 && aconnector->fake_enable && aconnector->dc_link->local_sink)
+ 			aconnector->fake_enable = false;
+ 
+ 		if (aconnector->dc_sink)
+-- 
+2.43.0
+
