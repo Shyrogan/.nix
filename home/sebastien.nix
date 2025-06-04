@@ -67,6 +67,8 @@ in {
       code-cursor
 
       gnome-font-viewer
+
+      element-desktop
     ];
 
     stateVersion = "24.05";
@@ -87,6 +89,14 @@ in {
     nvf.enable = true;
     spicetify.enable = true;
     helix.enable = true;
+    mergiraf.enable = true;
+    git = {
+      enable = true;
+      difftastic = {
+        enable = true;
+        enableAsDifftool = true;
+      };
+    };
   };
 
   xdg = {
