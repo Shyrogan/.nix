@@ -12,10 +12,8 @@
 
   networking = {
     hostName = "mizu";
-    firewall = {
-      enable = true;
-    };
   };
+
   environment = {
     variables = {
       ROC_ENABLE_PRE_VEGA = "1";
