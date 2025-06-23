@@ -15,9 +15,9 @@ in {
   # Styling
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/one-light.yaml";
     image = ../assets/everforest/fog_forest_alt_2.png;
-    polarity = "dark";
+    polarity = "light";
     fonts.monospace = {
       name = "JetBrainsMono Nerd Font";
       package = pkgs.nerd-fonts.jetbrains-mono;
@@ -27,7 +27,6 @@ in {
       package = pkgs.bibata-cursors;
       size = 24;
     };
-    targets.nvf.enable = false;
   };
 
   # User info
