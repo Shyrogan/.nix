@@ -98,6 +98,7 @@ in {
         "avante.nvim" = import ./plugins/avante.nix pkgs;
         "oil.nvim" = import ./plugins/oil.nix pkgs;
         "mini.colors" = import ./plugins/mini-colors.nix pkgs;
+        "claude-code.nvim" = import ./plugins/claude-code.nix;
       };
       navigation = {
         harpoon = import ./plugins/harpoon.nix;
