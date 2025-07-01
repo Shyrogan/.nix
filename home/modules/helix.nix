@@ -9,6 +9,7 @@ with lib; let
 in {
   programs.helix = mkIf cfg.enable {
     defaultEditor = true;
+    package = pkgs.evil-helix;
     languages = {
       language = [
         {
@@ -26,6 +27,9 @@ in {
         {
           name = "typescript";
         }
+        {
+          name = "python";
+        }
       ];
     };
     settings = {
@@ -36,6 +40,6 @@ in {
     };
   };
   home = mkIf cfg.enable {
-    packages = with pkgs; [ nil ruff typescript-language-server ];
+    packages = with pkgs; [ nil ];
   };
 }

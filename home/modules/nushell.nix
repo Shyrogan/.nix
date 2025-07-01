@@ -26,11 +26,6 @@ in {
         source ${config.age.secrets.env.path}
       '';
     };
-    # Yeah fuck
-    thefuck = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
     # Yazi
     yazi = {
       enable = true;

@@ -68,6 +68,7 @@ in {
       gnome-font-viewer
 
       element-desktop
+      claude-code
     ];
 
     stateVersion = "24.05";

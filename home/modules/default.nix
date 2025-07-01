@@ -10,6 +10,7 @@
     ./ghostty.nix
     ./helix.nix
     ./hyprland.nix
+    ./lazygit.nix
     ./niri.nix
     #./nixvim.nix
     ./nvf
