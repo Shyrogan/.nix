@@ -8,7 +8,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    stylix.homeManagerModules.stylix
+    stylix.homeModules.stylix
     ./modules
   ];
 

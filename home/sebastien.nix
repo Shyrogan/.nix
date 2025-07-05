@@ -8,7 +8,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    stylix.homeManagerModules.stylix
+    stylix.homeModules.stylix
     ./modules
   ];
 
@@ -35,40 +35,33 @@ in {
     homeDirectory = "/home/sebastien";
 
     packages = with pkgs; [
-      graalvm-ce
-      vesktop
-
-      gtk3
-      gdk-pixbuf
-
+      # Work must have
       thunderbird
       slack
+      nodejs
+
+      vlc
+
       obs-studio
 
       gitkraken
 
-      zotero
       onlyoffice-bin
 
       # DevOps tools
       k3s
       argocd
       kubernetes-helm
-      vlc
       sshfs
 
-      prismlauncher
       zen-browser.packages.${pkgs.system}.default
-      lazygit
-
       jetbrains.datagrip
-
-      code-cursor
 
       gnome-font-viewer
 
-      element-desktop
-      claude-code
+      # AI related
+      code-cursor
+      opencode
     ];
 
     stateVersion = "24.05";
@@ -97,6 +90,8 @@ in {
         enableAsDifftool = true;
       };
     };
+    lazygit.enable = true;
+    vesktop.enable = true;
   };
 
   xdg = {
