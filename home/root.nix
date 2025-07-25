@@ -16,7 +16,7 @@ in {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-    image = ../assets/dark-wallpaper.png;
+    #image = ../assets/dark-wallpaper.png;
     polarity = "dark";
   };
 
