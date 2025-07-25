@@ -7,7 +7,7 @@
 }:
 with lib; let
   cfg = config.wayland.windowManager.hyprland;
-  inherit (inputs) hyprland;
+  inherit (inputs) hyprland papertoy;
   hyprPkgs = hyprland.packages.${pkgs.system};
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
@@ -46,7 +46,7 @@ in {
         [
           "$mod, Return, exec, ghostty"
           "$mod, X, killactive"
-          "$mod, Space, exec, fuzzel"
+          "$mod, Space, exec, walker"
           "$mod, F, fullscreen, active"
           "$mod, V, togglefloating"
         ]
@@ -135,11 +135,16 @@ in {
       gestures = {
         workspace_swipe = true;
       };
+
+      exec-once = [
+        "papertoy ${../../assets/galaxy.glsl} --output 0"
+        "papertoy ${../../assets/galaxy.glsl} --output 1"
+      ];
     };
   };
   services = mkIf cfg.enable {
     avizo.enable = true;
-    hyprpaper.enable = true;
+    #hyprpaper.enable = true;
     mako.enable = true;
   };
   home = {
@@ -156,6 +161,7 @@ in {
         smile
         mission-center
         myxer
+        papertoy.packages.${pkgs.system}.default
       ];
   };
 }

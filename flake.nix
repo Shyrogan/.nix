@@ -43,6 +43,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    nixpkgs_opencode.url = "github:nixos/nixpkgs/pull/419604/head";
+    walker.url = "github:abenz1267/walker";
+    papertoy.url = "github:sin-ack/papertoy";
   };
 
   outputs = {
@@ -55,6 +58,8 @@
     nvf,
     spicetify-nix,
     agenix,
+    nixpkgs_opencode,
+    walker,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystemPassThrough (
@@ -93,6 +98,17 @@
               agenix.homeManagerModules.default
               nvf.homeManagerModules.default
               spicetify-nix.homeManagerModules.spicetify
+              (
+                { ... }:
+                {
+                  nixpkgs.overlays = [
+                    (final: prev: {
+                      opencode = nixpkgs_opencode.legacyPackages.${prev.system}.opencode;
+                    })
+                  ];
+                }
+              )
+              walker.homeManagerModules.default
               ./home/sebastien.nix
             ];
           };

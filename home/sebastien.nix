@@ -62,6 +62,11 @@ in {
       # AI related
       code-cursor
       opencode
+
+      lazygit
+      vesktop
+
+      podman-compose
     ];
 
     stateVersion = "24.05";
@@ -75,7 +80,11 @@ in {
   # Programs
   programs = {
     nushell.enable = true;
-    fuzzel.enable = true;
+    #fuzzel.enable = true;
+    walker = {
+      enable = true;
+      runAsService = true;
+    };
     zathura.enable = true;
     zellij.enable = true;
     ghostty.enable = true;
@@ -90,8 +99,6 @@ in {
         enableAsDifftool = true;
       };
     };
-    lazygit.enable = true;
-    vesktop.enable = true;
   };
 
   xdg = {
