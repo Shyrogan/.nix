@@ -144,7 +144,6 @@ in {
   };
   services = mkIf cfg.enable {
     avizo.enable = true;
-    #hyprpaper.enable = true;
     mako.enable = true;
   };
   home = {
