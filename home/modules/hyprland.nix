@@ -7,7 +7,7 @@
 }:
 with lib; let
   cfg = config.wayland.windowManager.hyprland;
-  inherit (inputs) hyprland papertoy;
+  inherit (inputs) hyprland papertoy Hyprspace;
   hyprPkgs = hyprland.packages.${pkgs.system};
 in {
   wayland.windowManager.hyprland = mkIf cfg.enable {
@@ -18,6 +18,7 @@ in {
     };
     xwayland.enable = true;
     plugins = [
+      Hyprspace.packages.${pkgs.system}.Hyprspace
     ];
 
     settings = let
@@ -49,6 +50,7 @@ in {
           "$mod, Space, exec, walker"
           "$mod, F, fullscreen, active"
           "$mod, V, togglefloating"
+          "$mod, O, overview:toggle"
         ]
         ++
         # For each workspaces, creates bindings
@@ -108,8 +110,15 @@ in {
         };
       };
 
+      bezier = [
+        "myBezier, 0.05, 0.9, 0.1, 1.05"
+        "easeOut, 0, 1, .2, 1"
+        "overshot, 0.7, 0.6, 0.1, 1.1"
+      ];
+
       animation = [
-        "global, 0"
+        "windows, 0"
+        "workspaces, 0"
       ];
 
       monitor = [
@@ -126,6 +135,8 @@ in {
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
         middle_click_paste = false;
+        vfr = true;
+        vrr = 1;
       };
 
       windowrulev2 = [
@@ -134,11 +145,36 @@ in {
 
       gestures = {
         workspace_swipe = true;
+        workspace_swipe_fingers = 3;
+        workspace_swipe_forever = true;
+        workspace_swipe_use_r = true;
+        workspace_swipe_distance = 600;
+        workspace_swipe_cancel_ratio = 0.1;
+        workspace_swipe_min_speed_to_force = 15;
+      };
+
+      plugin = {
+        overview = {
+          overrideGaps = false;
+          gapsIn = 10;
+          gapsOut = 30;
+          panelHeight = 300;
+          reservedArea = 32;
+          workspaceActiveBorder = "rgba(99999999)";
+          workspaceInactiveBorder = "rgba(55555599)";
+          drawActiveWorkspace = true;
+          showOvelayLayers = true;
+          hideRealLayers = false;
+          affectStrut = false;
+          panelBorderWidth = 0;
+          panelBorderColor = "rgba(707070cc)";
+          panelColor = "rgba(10101044)";
+        };
       };
 
       exec-once = [
-        "papertoy ${../../assets/galaxy.glsl} --output 0"
-        "papertoy ${../../assets/galaxy.glsl} --output 1"
+        # "papertoy ${../../assets/galaxy.glsl} --output 0"
+        # "papertoy ${../../assets/galaxy.glsl} --output 1"
       ];
     };
   };

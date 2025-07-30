@@ -16,7 +16,7 @@ in {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/one-light.yaml";
-    image = ../assets/everforest/fog_forest_alt_2.png;
+    image = ../assets/wallpaper_loris.png;
     polarity = "light";
     fonts.monospace = {
       name = "JetBrainsMono Nerd Font";
@@ -59,10 +59,6 @@ in {
 
       gnome-font-viewer
 
-      # AI related
-      code-cursor
-      opencode
-
       lazygit
       vesktop
 
@@ -99,6 +95,7 @@ in {
         enableAsDifftool = true;
       };
     };
+    vscode.enable = true;
   };
 
   xdg = {

@@ -46,6 +46,10 @@
     nixpkgs_opencode.url = "github:nixos/nixpkgs/pull/419604/head";
     walker.url = "github:abenz1267/walker";
     papertoy.url = "github:sin-ack/papertoy";
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = {
