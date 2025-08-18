@@ -5,7 +5,12 @@
 }: let
   inherit (inputs) stylix zen-browser;
 in {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+       "libsoup-2.74.3"
+    ];
+  };
 
   imports = [
     stylix.homeModules.stylix
@@ -16,7 +21,7 @@ in {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/one-light.yaml";
-    image = ../assets/wallpaper_loris.png;
+    image = ../assets/wallpapers/vangogh.jpg;
     polarity = "light";
     fonts.monospace = {
       name = "JetBrainsMono Nerd Font";
@@ -63,6 +68,11 @@ in {
       vesktop
 
       podman-compose
+
+      bambu-studio
+
+      spotify-player
+      code-cursor
     ];
 
     stateVersion = "24.05";

@@ -40,6 +40,7 @@ in {
       papirus-icon-theme
       nautilus
       loupe
+      grim
     ];
 
     security.polkit = mkIf cfg.enable {

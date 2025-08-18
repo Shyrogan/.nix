@@ -119,6 +119,7 @@ in {
       animation = [
         "windows, 0"
         "workspaces, 0"
+        "fade, 0"
       ];
 
       monitor = [
