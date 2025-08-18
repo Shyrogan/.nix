@@ -20,9 +20,9 @@ in {
   # Styling
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/one-light.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     image = ../assets/wallpapers/vangogh.jpg;
-    polarity = "light";
+    polarity = "dark";
     fonts.monospace = {
       name = "JetBrainsMono Nerd Font";
       package = pkgs.nerd-fonts.jetbrains-mono;
