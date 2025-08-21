@@ -7,6 +7,9 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-unified.url = "github:srid/nixos-unified";
+
+    stylix.url = "github:nix-community/stylix";
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs = inputs:

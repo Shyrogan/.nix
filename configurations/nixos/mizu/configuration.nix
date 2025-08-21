@@ -1,15 +1,16 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   boot.loader = {
     systemd-boot.enable = true;
-    canTouchEfiVariables = true;
+    efi.canTouchEfiVariables = true;
   };
+  console.keyMap = "fr";
 
   hardware = {
     amdgpu = {
       opencl.enable = true;
     };
     bluetooth.enable = true;
-    pulseaudio.enable = true;
   };
 
   networking = {
@@ -23,6 +24,7 @@
       sebastien = {
         isNormalUser = true;
         extraGroups = ["wheel" "audio" "docker" "dialout"];
+        password = "hello";
         packages = with pkgs; [
           # Default shell
           nushell
@@ -42,9 +44,5 @@
       alsa.enable = true;
       pulse.enable = true;
     };
-  };
-
-  programs = {
-    niri.enable = true;
   };
 }

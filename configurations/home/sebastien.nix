@@ -14,5 +14,11 @@ in
     email = "sebastien@shyrogan.fr";
   };
 
+  programs = {
+    niri = {
+      enable = true;
+    };
+  };
+
   home.stateVersion = "24.11";
 }
