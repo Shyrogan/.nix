@@ -1,10 +1,6 @@
-{ flake, ...}: 
-let
-  inherit (flake) inputs;
-  inherit (inputs) home-manager;
-in
+{ pkgs, ...}: 
 {
   environment.systemPackages = [
-    home-manager.packages.default
+    pkgs.home-manager
   ];
 }
