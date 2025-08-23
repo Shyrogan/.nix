@@ -7,4 +7,18 @@ in
   imports = [
     niri.homeModules.niri
   ];
+
+  programs.niri = {
+    settings = {
+      environment."NIXOS_OZONE_WL" = "1";
+      input = {
+        mod-key = "Ctrl";
+      };
+
+      binds = {
+        "Mod+Return".action.spawn = "ghostty";
+        "Mod+Space".action.spawn = "fuzzel";
+      };
+    };
+  };
 }

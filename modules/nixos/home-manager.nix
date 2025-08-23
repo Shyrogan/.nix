@@ -1,13 +1,10 @@
 { flake, ...}: 
 let
-  inherit (flake) home-manager;
+  inherit (flake) inputs;
+  inherit (inputs) home-manager;
 in
 {
-  imports = [
-    home-manager.nixosModules.home-manager
-    {
-      home-manager.useGlobalPkgs = true;
-      home-manager.users.sebastien = ../../configurations/home/sebastien.nix;
-    }
+  environment.systemPackages = [
+    home-manager.packages.default
   ];
 }

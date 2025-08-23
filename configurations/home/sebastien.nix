@@ -15,9 +15,10 @@ in
   };
 
   programs = {
-    niri = {
-      enable = true;
-    };
+    niri.enable = true;
+    nushell.enable = true;
+    ghostty.enable = true;
+    fuzzel.enable = true;
   };
 
   home.stateVersion = "24.11";

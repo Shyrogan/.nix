@@ -29,6 +29,7 @@
           # Default shell
           nushell
         ];
+        shell = pkgs.nushell;
       };
     };
   };
