@@ -11,6 +11,7 @@ in
   programs.niri = {
     settings = {
       environment."NIXOS_OZONE_WL" = "1";
+
       input = {
         mod-key = "Ctrl";
       };

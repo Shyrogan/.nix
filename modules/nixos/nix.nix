@@ -18,6 +18,7 @@ in
     };
     settings = {
       auto-optimise-store = true;
+      allowed-users = ["sebastien"];
 
       # For speeding up
       experimental-features = ["nix-command" "flakes"];
