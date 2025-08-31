@@ -1,7 +1,7 @@
-{ flake, ... }:
+{ flake, pkgs, ... }:
 let
   inherit (flake) inputs;
-  inherit (inputs) self;
+  inherit (inputs) self zen-browser;
 in
 {
   imports = [
@@ -20,7 +20,11 @@ in
     nushell.enable = true;
     ghostty.enable = true;
     fuzzel.enable = true;
+    nvf.enable = true;
   };
+  home.packages = [
+    zen-browser.packages.${pkgs.system}.default
+  ];
 
   home.stateVersion = "25.05";
 }

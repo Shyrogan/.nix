@@ -10,6 +10,12 @@
 
     stylix.url = "github:nix-community/stylix";
     niri.url = "github:sodiboo/niri-flake";
+
+    zen-browser.url = "github:youwen5/zen-browser-flake";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+    nvf.url = "github:NotAShelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:
