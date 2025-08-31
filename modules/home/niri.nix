@@ -13,7 +13,11 @@ in
       environment."NIXOS_OZONE_WL" = "1";
 
       input = {
-        mod-key = "Ctrl";
+        keyboard = {
+          xkb = {
+            layout = "fr";
+          };
+        };
       };
 
       binds = {
