@@ -67,8 +67,6 @@ in {
       lazygit
       vesktop
 
-      podman-compose
-
       bambu-studio
 
       spotify-player
@@ -79,7 +77,6 @@ in {
   };
 
   services = {
-    podman.enable = true;
     ollama.enable = true;
   };
 

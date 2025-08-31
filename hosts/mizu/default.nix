@@ -25,6 +25,8 @@
     steam.enable = true;
   };
 
+  virtualisation.docker.enable = true;
+
   # Users for my laptop
   users = {
     mutableUsers = true;
