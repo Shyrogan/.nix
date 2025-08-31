@@ -45,17 +45,17 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "sebastien";
+  };
 
   users.users.sebastien = {
     isNormalUser = true;
     description = "sebastien";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      neovim
-    ];
   };
 
-  programs.firefox.enable = true;
   programs.git.enable = true;
 
   nixpkgs.config.allowUnfree = true;

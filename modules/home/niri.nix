@@ -4,10 +4,6 @@ let
   inherit (inputs) niri;
 in
 {
-  imports = [
-    niri.homeModules.niri
-  ];
-
   programs.niri = {
     settings = {
       environment."NIXOS_OZONE_WL" = "1";
