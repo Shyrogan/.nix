@@ -15,6 +15,7 @@ in
   };
 
   programs = {
+    bash.enable = true;
     niri.enable = true;
     nushell.enable = true;
     ghostty.enable = true;
