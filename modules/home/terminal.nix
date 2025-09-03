@@ -1,5 +1,8 @@
-{ config, lib, ... }: {
-  programs.ghostty = lib.mkIf config.programs.ghostty.enable {
+{
+  programs.ghostty = {
     installVimSyntax = true;
+    settings = {
+      window-decoration = "none";
+    };
   };
 }

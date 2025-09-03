@@ -15,15 +15,19 @@ in
   };
 
   programs = {
-    bash.enable = true;
-    niri.enable = true;
     nushell.enable = true;
     ghostty.enable = true;
     fuzzel.enable = true;
     nvf.enable = true;
+    vesktop.enable = true;
+    obs-studio.enable = true;
   };
   home.packages = [
     zen-browser.packages.${pkgs.system}.default
+    pkgs.pavucontrol
+    pkgs.vlc
+    pkgs.nautilus
+    pkgs.lazygit
   ];
 
   home.stateVersion = "25.05";
