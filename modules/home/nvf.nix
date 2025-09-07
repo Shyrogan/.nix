@@ -1,6 +1,6 @@
-{ flake, ... }:
+{ flake, pkgs, ... }:
 let
-  inherit (flake.inputs) nvf;
+  inherit (flake.inputs) nvf fff;
 in
 {
   imports = [
@@ -35,6 +35,32 @@ in
         fastaction.enable = true;
         illuminate.enable = true;
         colorizer.enable = true;
+        colorizer.setupOpts.filetypes = { "*" = { }; };
+      };
+      lazy = {
+        enable = true;
+        plugins = {
+          "fff.nvim" = {
+            enabled = true;
+            package = fff.packages.${pkgs.system}.fff-nvim;
+          };
+        };
+      };
+      keymaps = [
+      	{
+	  key = "<leader>ff";
+	  mode = "n";
+	  silent = true;
+	  action = "<cmd>FFFFind<cr>";
+	}
+      ];
+      utility = {
+        snacks-nvim.enable = true;
+        oil-nvim.enable = true;
+      };
+      visuals = {
+        indent-blankline.enable = true;
+        rainbow-delimiters.enable = true;
       };
     };
   };

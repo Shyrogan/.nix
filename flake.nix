@@ -17,6 +17,8 @@
 
     nvf.url = "github:NotAShelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
+    fff.url = "github:dmtrKovalenko/fff.nvim";
+    fff.inputs.nixpkgs.follows = "nixpkgs";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };

@@ -58,7 +58,7 @@
   programs.git.enable = true;
   programs.niri.enable = true;
   programs.steam.enable = true;
-  environment.systemPackages = [ pkgs.xwayland-satellite ];
+  environment.systemPackages = [ pkgs.xwayland-satellite pkgs.cage ];
 
   nixpkgs.config.allowUnfree = true;
 

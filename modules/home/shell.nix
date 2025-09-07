@@ -5,6 +5,9 @@
       shellAliases = {
         "cat" = "bat";
       };
+      settings = {
+        show_banner = false;
+      };
     };
 
     bat.enable = true;
