@@ -22,5 +22,6 @@ in
       package = pkgs.bibata-cursors;
       size = 24;
     };
+    polarity = "dark";
   };
 }

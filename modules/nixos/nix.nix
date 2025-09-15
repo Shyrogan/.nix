@@ -1,4 +1,4 @@
-{ flake, ... }: 
+{ flake, ... }:
 let
   inherit (flake) inputs;
   inherit (inputs) determinate;
@@ -18,12 +18,23 @@ in
     };
     settings = {
       auto-optimise-store = true;
-      allowed-users = ["sebastien"];
+      allowed-users = [ "sebastien" ];
 
       # For speeding up
-      experimental-features = ["nix-command" "flakes"];
-      substituters = ["https://nix-gaming.cachix.org" "https://hyprland.cachix.org" "https://install.determinate.systems"];
-      trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      substituters = [
+        "https://nix-gaming.cachix.org"
+        "https://hyprland.cachix.org"
+        "https://install.determinate.systems"
+      ];
+      trusted-public-keys = [
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
+      ];
     };
   };
 }
