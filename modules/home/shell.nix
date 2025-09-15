@@ -14,7 +14,7 @@
           show_banner = false;
         };
         envFile.text = ''
-          source ${config.age.secrets.env.path}
+          source /run/user/1000/agenix/env
         '';
       };
 

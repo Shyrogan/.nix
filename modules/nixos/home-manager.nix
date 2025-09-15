@@ -1,4 +1,4 @@
-{ flake, pkgs, ...}: 
+{ flake, pkgs, ... }:
 let
   inherit (flake.inputs) self;
 in
@@ -7,5 +7,8 @@ in
     pkgs.home-manager
     pkgs.nh
   ];
-  home-manager.users.sebastien = (self + /configurations/home/sebastien.nix);
+  home-manager = {
+    users.sebastien = self + /configurations/home/sebastien.nix;
+    backupFileExtension = "backup";
+  };
 }

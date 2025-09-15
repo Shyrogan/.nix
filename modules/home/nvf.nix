@@ -33,7 +33,7 @@ in
       assistant.avante-nvim = {
         enable = true;
         setupOpts = {
-          openrouter = {
+          providers.openrouter = {
             __inherited_from = "openai";
             endpoint = "https://openrouter.ai/api/v1";
             api_key_name = "OPENROUTER_API_KEY";
