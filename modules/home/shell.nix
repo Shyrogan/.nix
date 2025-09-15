@@ -1,33 +1,41 @@
 { config, lib, ... }:
 {
-  config.programs = lib.mkIf config.programs.nushell.enable {
-    nushell = {
-      shellAliases = {
-        "cat" = "bat";
+  age.secrets.env.file = ../../assets/secrets/sebastien.age;
+  programs =
+    let
+      enabled = lib.mkIf config.programs.nushell.enable;
+    in
+    {
+      nushell = {
+        shellAliases = {
+          "cat" = "bat";
+        };
+        settings = {
+          show_banner = false;
+        };
+        envFile.text = ''
+          source ${config.age.secrets.env.path}
+        '';
       };
-      settings = {
-        show_banner = false;
-      };
+
+      bat.enable = enabled;
+
+      carapace.enable = enabled;
+      carapace.enableNushellIntegration = enabled;
+
+      eza.enable = enabled;
+      eza.enableNushellIntegration = enabled;
+
+      nix-your-shell.enable = enabled;
+      nix-your-shell.enableNushellIntegration = enabled;
+
+      pay-respects.enable = enabled;
+      pay-respects.enableNushellIntegration = enabled;
+
+      starship.enable = enabled;
+      starship.enableNushellIntegration = enabled;
+
+      zoxide.enable = enabled;
+      zoxide.enableNushellIntegration = enabled;
     };
-
-    bat.enable = true;
-    
-    carapace.enable = true;
-    carapace.enableNushellIntegration = true;
-
-    eza.enable = true;
-    eza.enableNushellIntegration = true;
-
-    nix-your-shell.enable = true;
-    nix-your-shell.enableNushellIntegration = true;
-
-    pay-respects.enable = true;
-    pay-respects.enableNushellIntegration = true;
-
-    starship.enable = true;
-    starship.enableNushellIntegration = true;
-
-    zoxide.enable = true;
-    zoxide.enableNushellIntegration = true;
-  };
 }
