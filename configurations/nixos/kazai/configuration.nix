@@ -44,6 +44,7 @@
     enable = true;
     user = "sebastien";
   };
+  services.openssh.enable = true;
 
   users.users.sebastien = {
     isNormalUser = true;

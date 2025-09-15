@@ -1,9 +1,9 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
-  age.secrets.env.file = ../../assets/secrets/sebastien.age;
+  age.secrets.env.file = ../../secrets/env.age;
   programs =
     let
-      enabled = lib.mkIf config.programs.nushell.enable;
+      enabled = config.programs.nushell.enable;
     in
     {
       nushell = {
