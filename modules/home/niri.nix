@@ -49,6 +49,7 @@
               top-right = radius;
             };
           clip-to-geometry = true;
+          draw-border-with-background = false;
         }
         {
           matches = [ { app-id = "zen"; } ];
@@ -63,6 +64,7 @@
           open-on-workspace = "10-spotify";
         }
       ];
+      prefer-no-csd = true;
 
       binds = with config.lib.niri.actions; {
         "Mod+X".action = close-window;
@@ -108,6 +110,9 @@
         "Mod+Shift+Agrave".action.move-column-to-workspace = "10-spotify";
 
         "Mod+V".action = toggle-window-floating;
+
+        "Mod+Shift+S".action = screenshot-window { write-to-disk = true; };
+        "Print".action = screenshot { show-pointer = true; };
       };
 
       workspaces = {
@@ -121,6 +126,10 @@
         };
         "10-spotify" = {
         };
+      };
+
+      hotkey-overlay = {
+        skip-at-startup = true;
       };
     };
   };
