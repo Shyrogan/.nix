@@ -27,6 +27,8 @@ in
   services = {
     hyprpaper.enable = true;
   };
+  wayland.windowManager.hyprland.enable = true;
+  
   home.packages = with pkgs; [
     zen-browser.packages.${system}.default
     pavucontrol
@@ -40,6 +42,7 @@ in
       ];
     })
     gimp
+    davinci-resolve
   ];
 
   home.stateVersion = "25.05";

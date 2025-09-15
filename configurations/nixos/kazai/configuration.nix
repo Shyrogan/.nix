@@ -57,7 +57,6 @@
   };
 
   programs.git.enable = true;
-  programs.niri.enable = true;
   programs.steam.enable = true;
   environment.systemPackages = [ pkgs.xwayland-satellite pkgs.cage ];
 
