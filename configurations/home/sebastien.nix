@@ -16,12 +16,7 @@ in
 
   programs = {
     nushell.enable = true;
-    ghostty = {
-      enable = true;
-      settings = {
-        window-decoration = "none";
-      };
-    };
+    ghostty.enable = true;
     fuzzel.enable = true;
     nvf.enable = true;
     vesktop.enable = true;
