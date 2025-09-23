@@ -9,7 +9,7 @@ in
 
   stylix = {
     enable = true;
-    base16Scheme = ../../assets/vangogh-material-hard.yaml;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     image = ../../assets/wallpapers/vangogh.jpg;
     fonts = {
       monospace = {
