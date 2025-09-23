@@ -45,6 +45,7 @@
     user = "sebastien";
   };
   services.openssh.enable = true;
+  services.usbmuxd.enable = true;
 
   users.users.sebastien = {
     isNormalUser = true;
@@ -58,7 +59,8 @@
 
   programs.git.enable = true;
   programs.steam.enable = true;
-  environment.systemPackages = [ pkgs.xwayland-satellite pkgs.cage ];
+  programs.hyprland.enable = true;
+  environment.systemPackages = [ pkgs.xwayland-satellite pkgs.ifuse ];
 
   nixpkgs.config.allowUnfree = true;
 

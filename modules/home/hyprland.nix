@@ -1,3 +1,7 @@
+{ config, lib, ... }:
+let
+  hyprshotConfig = config.programs.hyprshot;
+in
 {
   wayland.windowManager.hyprland = {
     settings = {
@@ -48,17 +52,56 @@
           workspaces = builtins.map (n: mkWorkspace n (builtins.elemAt keys (n - 1))) (
             builtins.genList (n: n + 1) 10
           );
-          motions = builtins.map (n: mkMoveToWorkspace n (builtins.elemAt keys (n - 1))) (
+          workspaceMovements = builtins.map (n: mkMoveToWorkspace n (builtins.elemAt keys (n - 1))) (
             builtins.genList (n: n + 1) 10
           );
+          focusKeys = [
+            "h"
+            "j"
+            "k"
+            "l"
+          ];
+          directions = [
+            "l"
+            "d"
+            "u"
+            "r"
+          ];
+          focusMovements = builtins.map (
+            i: "$mod, ${builtins.elemAt focusKeys i}, movefocus, ${builtins.elemAt directions i}"
+          ) (builtins.genList (n: n) 4);
+          resizeMovements = builtins.map (
+            i:
+            "SHIFT+$mod, ${builtins.elemAt focusKeys i}, resizeactive, ${
+              builtins.elemAt [ "-10 0" "0 10" "0 -10" "10 0" ] i
+            }"
+          ) (builtins.genList (n: n) 4);
         in
         workspaces
-        ++ motions
+        ++ workspaceMovements
+        ++ focusMovements
+        ++ resizeMovements
         ++ [
           "$mod, return, exec, ghostty"
           "$mod, space, exec, fuzzel"
           "$mod, x, killactive"
+
+          "$mod, f, fullscreen"
+          "$mod, v, togglefloating"
+
+          "SHIFT+ALT+$mod, q, exit"
+        ]
+        ++ lib.optionals hyprshotConfig.enable [
+          "SHIFT+$mod, S, exec, hyprshot -m region --clipboard-only"
+          "$mod, Print, exec, hyprshot -m window --clipboard-only"
+          ", Print, exec, hyprshot -m monitor --clipboard-only"
         ];
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+        "$mod, Control_L, movewindow"
+        "$mod, ALT_L, resizewindow"
+      ];
       decoration = {
         rounding = 12;
         shadow = {
