@@ -68,6 +68,12 @@ in
           silent = true;
           action = "<cmd>FFFFind<cr>";
         }
+        {
+          key = "<leader>o";
+          mode = "n";
+          silent = true;
+          action = "<cmd>Oil<cr>";
+        }
       ];
       utility = {
         snacks-nvim.enable = true;
