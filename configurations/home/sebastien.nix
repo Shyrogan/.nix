@@ -23,6 +23,7 @@ in
     obs-studio.enable = true;
     spicetify.enable = true;
     ankama-launcher.enable = true;
+    hyprshot.enable = true;
   };
   services = {
     hyprpaper.enable = true;
@@ -43,6 +44,7 @@ in
     })
     gimp
     davinci-resolve
+    lunar-client
   ];
 
   home.stateVersion = "25.05";
