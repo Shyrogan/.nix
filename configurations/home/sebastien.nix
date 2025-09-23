@@ -24,6 +24,7 @@ in
     spicetify.enable = true;
     ankama-launcher.enable = true;
     hyprshot.enable = true;
+    walker.enable = true;
   };
   services = {
     hyprpaper.enable = true;

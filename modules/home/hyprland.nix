@@ -83,7 +83,7 @@ in
         ++ resizeMovements
         ++ [
           "$mod, return, exec, ghostty"
-          "$mod, space, exec, fuzzel"
+          "$mod, space, exec, walker"
           "$mod, x, killactive"
 
           "$mod, f, fullscreen"

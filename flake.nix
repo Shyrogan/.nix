@@ -23,6 +23,8 @@
     fff.inputs.nixpkgs.follows = "nixpkgs";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    walker.url = "github:abenz1267/walker";
   };
 
   outputs =
