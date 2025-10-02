@@ -22,6 +22,7 @@ in
         enableTreesitter = true;
 
         nix.enable = true;
+        ts.enable = true;
       };
       lsp = {
         enable = true;
