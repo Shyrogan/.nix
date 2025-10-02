@@ -46,6 +46,7 @@ in
     gimp
     davinci-resolve
     lunar-client
+    slack
   ];
 
   home.stateVersion = "25.05";
