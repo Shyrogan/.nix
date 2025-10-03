@@ -60,10 +60,9 @@
   programs.git.enable = true;
   programs.steam.enable = true;
   programs.hyprland.enable = true;
-  environment.systemPackages = [ pkgs.xwayland-satellite pkgs.ifuse ];
+  environment.systemPackages = [ pkgs.ifuse ];
 
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "25.05";
-
 }

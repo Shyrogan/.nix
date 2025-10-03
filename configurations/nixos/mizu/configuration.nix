@@ -1,10 +1,7 @@
-{ pkgs, ... }:
-{
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-  console.keyMap = "fr";
+{pkgs, ...}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   hardware = {
     amdgpu = {
@@ -13,37 +10,69 @@
     bluetooth.enable = true;
   };
 
+  # Bootloader.
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+
   networking = {
     hostName = "mizu";
     networkmanager.enable = true;
   };
 
-  users = {
-    mutableUsers = true;
-    users = {
-      sebastien = {
-        isNormalUser = true;
-        extraGroups = ["wheel" "audio" "docker" "dialout"];
-        password = "hello";
-        packages = with pkgs; [
-          # Default shell
-          nushell
-        ];
-        shell = pkgs.nushell;
-      };
-    };
+  # Set your time zone.
+  time.timeZone = "Europe/Paris";
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "fr_FR.UTF-8";
+    LC_IDENTIFICATION = "fr_FR.UTF-8";
+    LC_MEASUREMENT = "fr_FR.UTF-8";
+    LC_MONETARY = "fr_FR.UTF-8";
+    LC_NAME = "fr_FR.UTF-8";
+    LC_NUMERIC = "fr_FR.UTF-8";
+    LC_PAPER = "fr_FR.UTF-8";
+    LC_TELEPHONE = "fr_FR.UTF-8";
+    LC_TIME = "fr_FR.UTF-8";
   };
+  console.keyMap = "fr";
+
+  services.printing.enable = true;
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "sebastien";
+  };
+  services.openssh.enable = true;
+  services.usbmuxd.enable = true;
+
+  users.users.sebastien = {
+    isNormalUser = true;
+    description = "sebastien";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    shell = pkgs.nushell;
+  };
+
+  programs.git.enable = true;
+  programs.steam.enable = true;
+  programs.hyprland.enable = true;
+  environment.systemPackages = [pkgs.ifuse];
 
   # This is disabled due to it blocking boot
   systemd.services = {
     NetworkManager-wait-online.enable = false;
   };
 
-  services = {
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
+  system.stateVersion = "25.05";
 }
