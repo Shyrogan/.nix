@@ -20,6 +20,7 @@ in
 
       input = {
         kb_layout = "fr";
+        sensitivity = -0.5;
       };
 
       dwindle = {
@@ -73,7 +74,7 @@ in
           resizeMovements = builtins.map (
             i:
             "SHIFT+$mod, ${builtins.elemAt focusKeys i}, resizeactive, ${
-              builtins.elemAt [ "-10 0" "0 10" "0 -10" "10 0" ] i
+              builtins.elemAt [ "-20 0" "0 20" "0 -20" "20 0" ] i
             }"
           ) (builtins.genList (n: n) 4);
         in
@@ -127,13 +128,18 @@ in
         enabled = "yes";
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
         animation = [
-          "windows, 1, 2, myBezier"
-          "windowsOut, 1, 2, default, popin 80%"
-          "border, 1, 3, default"
-          "fade, 1, 3, default"
-          "workspaces, 1, 2, default"
+          "windows, 1, 1, myBezier"
+          "windowsOut, 1, 1, default, popin 80%"
+          "border, 1, 4, default"
+          "fade, 1, 2, default"
+          "workspaces, 1, 1, default"
         ];
       };
+
+      monitor = [
+        "eDP-1,2880x1800@120,0x0,auto"
+        "HDMI-A-1,2560x1440@99.94600,auto-left,auto"
+      ];
     };
   };
 }
