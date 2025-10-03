@@ -25,6 +25,7 @@ in
     ankama-launcher.enable = true;
     hyprshot.enable = true;
     walker.enable = true;
+    tmux.enable = true;
   };
   services = {
     hyprpaper.enable = true;
