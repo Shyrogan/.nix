@@ -15,6 +15,7 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+  boot.kernelPackages = pkgs.linuxKernel.packagesFor pkgs.linuxKernel.kernels.linux_latest;
 
   networking = {
     hostName = "mizu";
