@@ -103,6 +103,10 @@ in
         "$mod, Control_L, movewindow"
         "$mod, ALT_L, resizewindow"
       ];
+
+      bindl = [
+        ", switch:lid:on, exec, systemctl hibernate"
+      ];
       decoration = {
         rounding = 12;
         shadow = {
