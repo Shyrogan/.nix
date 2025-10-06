@@ -48,6 +48,7 @@ in
     davinci-resolve
     lunar-client
     slack
+    devenv
   ];
 
   home.stateVersion = "25.05";
