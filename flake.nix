@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/17f6bd177404d6d43017595c5264756764444ab8";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     agenix.url = "github:ryantm/agenix";
 
