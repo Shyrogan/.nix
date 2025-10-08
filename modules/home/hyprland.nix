@@ -12,6 +12,11 @@ in
         resize_on_border = true;
       };
 
+      xwayland = {
+        enabled = true;
+        force_zero_scaling = true;
+      };
+
       misc = {
         disable_splash_rendering = true;
         force_default_wallpaper = 1;
@@ -135,9 +140,13 @@ in
       };
 
       monitor = [
-        "eDP-1,2880x1800@120,0x0,auto"
+        "eDP-1,2880x1800@120,0x0,1.5"
         "HDMI-A-1,2560x1440@99.94600,auto-left,auto"
       ];
     };
+  };
+
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
   };
 }
