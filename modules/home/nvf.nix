@@ -25,6 +25,7 @@ in
         ts.enable = true;
         python.enable = true;
       };
+      telescope.enable = true;
       lsp = {
         enable = true;
         lspsaga.enable = true;
@@ -57,19 +58,19 @@ in
       lazy = {
         enable = true;
         plugins = {
-          "fff.nvim" = {
-            enabled = true;
-            package = fff.packages.${pkgs.system}.fff-nvim;
-          };
+          # "fff.nvim" = {
+          #   enabled = true;
+          #   package = fff.packages.${pkgs.system}.fff-nvim;
+          # };
         };
       };
       keymaps = [
-        {
-          key = "<leader>ff";
-          mode = "n";
-          silent = true;
-          action = "<cmd>FFFFind<cr>";
-        }
+        # {
+        #   key = "<leader>ff";
+        #   mode = "n";
+        #   silent = true;
+        #   action = "<cmd>FFFFind<cr>";
+        # }
         {
           key = "<leader>o";
           mode = "n";
