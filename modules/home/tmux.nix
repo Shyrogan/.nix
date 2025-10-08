@@ -9,6 +9,9 @@
 
     # Custom tmux configuration with bubble status bar using Stylix colors
     extraConfig = ''
+      # Set escape time to 0 for immediate escape key response
+      set-option -g escape-time 0
+
       # Set status bar position to bottom
       set-option -g status-position bottom
 
