@@ -41,7 +41,7 @@ in
             endpoint = "https://openrouter.ai/api/v1";
             api_key_name = "OPENROUTER_API_KEY";
             model = "x-ai/grok-code-fast-1";
-            timeout = 30000; 
+            timeout = 30000;
           };
         };
       };
@@ -77,6 +77,56 @@ in
           silent = true;
           action = "<cmd>Oil<cr>";
         }
+        {
+          key = "<C-s>";
+          action = "<cmd>w<cr>";
+          mode = [
+            "n"
+            "v"
+            "x"
+          ];
+          desc = "Save buffer";
+        }
+        {
+          key = "<C-j>";
+          action = "<cmd>wincmd j<cr>";
+          mode = [
+            "n"
+            "v"
+            "x"
+          ];
+          desc = "Move to pane below";
+        }
+        {
+          key = "<C-k>";
+          action = "<cmd>wincmd k<cr>";
+          mode = [
+            "n"
+            "v"
+            "x"
+          ];
+          desc = "Move to pane above";
+        }
+        {
+          key = "<C-l>";
+          action = "<cmd>wincmd l<cr>";
+          mode = [
+            "n"
+            "v"
+            "x"
+          ];
+          desc = "Move to pane to the right";
+        }
+        {
+          key = "<C-h>";
+          action = "<cmd>wincmd h<cr>";
+          mode = [
+            "n"
+            "v"
+            "x"
+          ];
+          desc = "Move to pane to the left";
+        }
       ];
       utility = {
         snacks-nvim.enable = true;
@@ -97,7 +147,7 @@ in
         ignorecase = true;
         numberwidth = 4;
         pumheight = 10;
-        shiftwidth = 4;
+        shiftwidth = 2;
         scrolloff = 8;
         showmode = false;
         sidescrolloff = 8;
@@ -105,9 +155,18 @@ in
         smartindent = true;
         splitbelow = true;
         splitright = true;
-        tabstop = 4;
         timeoutlen = 500;
         wrap = false;
+        tabstop = 2;
+        softtabstop = 2;
+        showtabline = 0;
+        laststatus = 0;
+        expandtab = true;
+        grepprg = "rg --vimgrep";
+        grepformat = "%f:%l:%c:%m";
+        updatetime = 50;
+        list = true;
+        listchars = "eol:↲,tab:··,lead:·,space: ,trail:•,extends:→,precedes:←,nbsp:␣";
       };
       luaConfigRC.transparentTheme =
         entryAfter [ "theme" ]
