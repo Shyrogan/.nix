@@ -25,7 +25,7 @@ in
 
       input = {
         kb_layout = "fr";
-        sensitivity = -0.5;
+        # sensitivity = -0.5;
       };
 
       dwindle = {
