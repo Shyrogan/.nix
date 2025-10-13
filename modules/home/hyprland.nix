@@ -143,6 +143,13 @@ in
         "eDP-1,2880x1800@120,0x0,1.5"
         "HDMI-A-1,2560x1440@99.94600,auto-left,auto"
       ];
+
+      device = [
+        {
+          name = "glorious-model-o-2-pro---4k/8khz-edition-1";
+          sensitivity = -0.5;
+        }
+      ];
     };
   };
 
