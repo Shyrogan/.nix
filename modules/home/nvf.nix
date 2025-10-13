@@ -31,17 +31,27 @@ in
         lspsaga.enable = true;
         trouble.enable = true;
       };
+      navigation.harpoon.enable = true;
       autocomplete.blink-cmp.enable = true;
       formatter.conform-nvim.enable = true;
       assistant.avante-nvim = {
         enable = true;
         setupOpts = {
-          providers.openrouter = {
-            __inherited_from = "openai";
-            endpoint = "https://openrouter.ai/api/v1";
-            api_key_name = "OPENROUTER_API_KEY";
-            model = "x-ai/grok-code-fast-1";
-            timeout = 30000;
+          providers = {
+            openrouter = {
+              __inherited_from = "openai";
+              endpoint = "https://openrouter.ai/api/v1";
+              api_key_name = "OPENROUTER_API_KEY";
+              model = "x-ai/grok-code-fast-1";
+              timeout = 30000;
+            };
+            openrouter_claude = {
+              __inherited_from = "openai";
+              endpoint = "https://openrouter.ai/api/v1";
+              api_key_name = "OPENROUTER_API_KEY";
+              model = "anthropic/claude-sonnet-4.5";
+              timeout = 30000;
+            };
           };
         };
       };
@@ -166,7 +176,6 @@ in
         grepformat = "%f:%l:%c:%m";
         updatetime = 50;
         list = true;
-        listchars = "eol:↲,tab:··,lead:·,space: ,trail:•,extends:→,precedes:←,nbsp:␣";
       };
       luaConfigRC.transparentTheme =
         entryAfter [ "theme" ]
