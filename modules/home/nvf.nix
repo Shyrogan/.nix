@@ -1,6 +1,6 @@
 { flake, pkgs, ... }:
 let
-  inherit (flake.inputs) nvf fff;
+  inherit (flake.inputs) nvf;
   inherit (nvf.lib.nvim.dag) entryAfter;
 in
 {
@@ -16,20 +16,43 @@ in
 
       binds.whichKey.enable = true;
 
+      treesitter = {
+        enable = true;
+        fold = true;
+        autotagHtml = true;
+        indent.enable = true;
+
+        grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          typescript # in language settings only tsx gets enabled, not typescript
+        ];
+      };
       languages = {
         enableDAP = true;
         enableExtraDiagnostics = true;
         enableTreesitter = true;
 
         nix.enable = true;
-        ts.enable = true;
+        ts = {
+          enable = true;
+          extensions.ts-error-translator.enable = true;
+        };
         python.enable = true;
+        css.enable = true;
+        html.enable = true;
       };
       telescope.enable = true;
       lsp = {
         enable = true;
         lspsaga.enable = true;
         trouble.enable = true;
+
+        servers = {
+          ts_ls.root_markers = [
+            "pnpm-workspace.yaml"
+            ".git"
+            "package.json"
+          ];
+        };
       };
       navigation.harpoon.enable = true;
       autocomplete.blink-cmp.enable = true;
@@ -211,4 +234,5 @@ in
   };
 
   stylix.targets.nvf.transparentBackground = true;
+  home.packages = [pkgs.typescript-language-server];
 }
