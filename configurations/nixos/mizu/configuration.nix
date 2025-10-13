@@ -8,6 +8,7 @@
       opencl.enable = true;
     };
     bluetooth.enable = true;
+    wooting.enable = true;
   };
 
   # Bootloader.
@@ -67,7 +68,7 @@
   programs.git.enable = true;
   programs.steam.enable = true;
   programs.hyprland.enable = true;
-  environment.systemPackages = [pkgs.ifuse];
+  environment.systemPackages = [pkgs.ifuse pkgs.overskride];
 
   # This is disabled due to it blocking boot
   systemd.services = {

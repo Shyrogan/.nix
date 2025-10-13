@@ -49,6 +49,7 @@ in
     slack
     devenv
     thunderbird
+    wootility
   ];
 
   home.stateVersion = "25.05";
