@@ -26,6 +26,7 @@ in
     hyprshot.enable = true;
     walker.enable = true;
     tmux.enable = true;
+    opencode.enable = true;
   };
   services = {
     hyprpaper.enable = true;
