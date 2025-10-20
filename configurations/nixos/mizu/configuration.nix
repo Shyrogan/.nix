@@ -10,6 +10,7 @@
     bluetooth.enable = true;
     wooting.enable = true;
   };
+  powerManagement.enable = true;
 
   # Bootloader.
   boot.loader = {
