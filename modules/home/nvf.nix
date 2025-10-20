@@ -39,6 +39,7 @@ in
         python.enable = true;
         css.enable = true;
         html.enable = true;
+        tailwind.enable = true;
       };
       telescope.enable = true;
       lsp = {
