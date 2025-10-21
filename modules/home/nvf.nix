@@ -75,7 +75,13 @@ in {
         };
       };
       autocomplete.blink-cmp.enable = true;
-      formatter.conform-nvim.enable = true;
+      formatter.conform-nvim = {
+        enable = true;
+        setupOpts.format_on_save = {
+          timeout_ms = 500;
+          lsp_format = "fallback";
+        };
+      };
       assistant.avante-nvim = {
         enable = true;
         setupOpts = {
