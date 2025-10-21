@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -40,21 +41,24 @@
   };
   console.keyMap = "fr";
 
-  services.printing.enable = true;
-  services.pulseaudio.enable = false;
+  services = {
+    printing.enable = true;
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+    displayManager.autoLogin = {
+      enable = true;
+      user = "sebastien";
+    };
+    openssh.enable = true;
+    usbmuxd.enable = true;
+    tlp.enable = true;
+  };
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "sebastien";
-  };
-  services.openssh.enable = true;
-  services.usbmuxd.enable = true;
 
   users.users.sebastien = {
     isNormalUser = true;
@@ -69,7 +73,10 @@
   programs.git.enable = true;
   programs.steam.enable = true;
   programs.hyprland.enable = true;
-  environment.systemPackages = [pkgs.ifuse pkgs.overskride];
+  environment.systemPackages = [
+    pkgs.ifuse
+    pkgs.overskride
+  ];
 
   # This is disabled due to it blocking boot
   systemd.services = {
