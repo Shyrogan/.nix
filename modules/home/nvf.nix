@@ -1,9 +1,11 @@
-{ flake, pkgs, ... }:
-let
+{
+  flake,
+  pkgs,
+  ...
+}: let
   inherit (flake.inputs) nvf;
   inherit (nvf.lib.nvim.dag) entryAfter;
-in
-{
+in {
   imports = [
     nvf.homeManagerModules.default
   ];
@@ -29,11 +31,13 @@ in
       languages = {
         enableDAP = true;
         enableExtraDiagnostics = true;
+        enableFormat = true;
         enableTreesitter = true;
 
         nix.enable = true;
         ts = {
           enable = true;
+          format.type = "prettierd";
           extensions.ts-error-translator.enable = true;
         };
         python.enable = true;
@@ -41,21 +45,35 @@ in
         html.enable = true;
         tailwind.enable = true;
       };
-      telescope.enable = true;
+      telescope = {
+        enable = true;
+        extensions = [
+          {
+            name = "fzf";
+            packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
+            setup = {
+              fzf = {
+                fuzzy = true;
+              };
+            };
+          }
+        ];
+      };
       lsp = {
         enable = true;
+        lspkind.enable = true;
         lspsaga.enable = true;
         trouble.enable = true;
-
-        servers = {
-          ts_ls.root_markers = [
-            "pnpm-workspace.yaml"
-            ".git"
-            "package.json"
-          ];
+      };
+      navigation.harpoon = {
+        enable = true;
+        mappings = {
+          file1 = "&";
+          file2 = "é";
+          file3 = ''"'';
+          file4 = "'";
         };
       };
-      navigation.harpoon.enable = true;
       autocomplete.blink-cmp.enable = true;
       formatter.conform-nvim.enable = true;
       assistant.avante-nvim = {
@@ -86,7 +104,7 @@ in
         illuminate.enable = true;
         colorizer.enable = true;
         colorizer.setupOpts.filetypes = {
-          "*" = { };
+          "*" = {};
         };
       };
       lazy = {
@@ -171,66 +189,66 @@ in
         rainbow-delimiters.enable = true;
       };
       options = {
-        cmdheight = 0;
-        autochdir = true;
-        autoindent = true;
-        backup = false;
-        fileencoding = "utf-8";
-        history = 50;
-        hlsearch = true;
-        ignorecase = true;
-        numberwidth = 4;
-        pumheight = 10;
-        shiftwidth = 2;
-        scrolloff = 8;
-        showmode = false;
-        sidescrolloff = 8;
-        smartcase = true;
-        smartindent = true;
-        splitbelow = true;
-        splitright = true;
-        timeoutlen = 500;
-        wrap = false;
+        # Set tabs to 2 spaces
         tabstop = 2;
         softtabstop = 2;
         showtabline = 0;
         laststatus = 0;
         expandtab = true;
+
+        # Enable auto indenting and set it to spaces
+        smartindent = true;
+        shiftwidth = 2;
+
+        # Enable smart indenting (see https://stackoverflow.com/questions/1204149/smart-wrap-in-vim)
+        breakindent = true;
+
+        # Enable incremental searching
+        hlsearch = true;
+        incsearch = true;
+
+        # Enable ignorecase + smartcase for better searching
+        ignorecase = true;
+        smartcase = true; # Don't ignore case with capitals
         grepprg = "rg --vimgrep";
         grepformat = "%f:%l:%c:%m";
-        updatetime = 50;
-        list = true;
+
+        # Decrease updatetime
+        updatetime = 50; # faster completion (4000ms default)
+
+        # Enable text wrap
+        wrap = true;
       };
       luaConfigRC.transparentTheme =
-        entryAfter [ "theme" ]
-          # lua
-          ''
-            vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-            vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Comment", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Constant", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Special", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Identifier", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Statement", { bg = "none" })
-            vim.api.nvim_set_hl(0, "PreProc", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Type", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Underlined", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Todo", { bg = "none" })
-            vim.api.nvim_set_hl(0, "String", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Function", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Conditional", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Repeat", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Operator", { bg = "none" })
-            vim.api.nvim_set_hl(0, "Structure", { bg = "none" })
-            vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-            vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
-            vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-            vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
-            vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-            vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
-            vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
-            vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-          '';
+        entryAfter ["theme"]
+        # lua
+        ''
+          vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+          vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Comment", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Constant", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Special", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Identifier", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Statement", { bg = "none" })
+          vim.api.nvim_set_hl(0, "PreProc", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Type", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Underlined", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Todo", { bg = "none" })
+          vim.api.nvim_set_hl(0, "String", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Function", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Conditional", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Repeat", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Operator", { bg = "none" })
+          vim.api.nvim_set_hl(0, "Structure", { bg = "none" })
+          vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+          vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
+          vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+          vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
+          vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
+          vim.api.nvim_set_hl(0, "StatusLine", { bg = "none" })
+          vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "none" })
+          vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+        '';
     };
   };
 
