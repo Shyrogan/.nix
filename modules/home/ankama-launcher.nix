@@ -4,18 +4,16 @@
   lib,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.programs.ankama-launcher;
   pname = "ankama-launcher";
   version = "0.1.0";
   src = pkgs.fetchurl {
     url = "https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage";
-    hash = "sha256-wG7xg6uQJsdJR9Xu2T9PCVQb+LSyO10BveGftOrc2Uo=";
+    hash = "sha256-0GI3qBt/hwRqmfvg817C5IiD8s9AYzTX6w2UAmyR02I=";
   };
-  content = pkgs.appimageTools.extractType2 { inherit pname version src; };
-in
-{
+  content = pkgs.appimageTools.extractType2 {inherit pname version src;};
+in {
   options.programs.ankama-launcher.enable = mkEnableOption "Ankama's launcher";
   config.home.packages = optionals cfg.enable [
     (pkgs.appimageTools.wrapType2 {
@@ -29,7 +27,7 @@ in
       '';
       meta = {
         description = "Official launcher for Ankama's games";
-        platforms = [ "x86_64-linux" ];
+        platforms = ["x86_64-linux"];
       };
     })
   ];

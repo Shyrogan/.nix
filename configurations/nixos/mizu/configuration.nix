@@ -1,5 +1,11 @@
-{ pkgs, ... }:
 {
+  flake,
+  pkgs,
+  ...
+}: let
+  inherit (flake.inputs) nixpkgs-linux-kernel;
+  pkgs-kernel = nixpkgs-linux-kernel.legacyPackages.${pkgs.system};
+in {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -18,7 +24,7 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  boot.kernelPackages = pkgs.linuxKernel.packagesFor pkgs.linuxKernel.kernels.linux_latest;
+  boot.kernelPackages = pkgs.linuxKernel.packagesFor pkgs-kernel.linuxKernel.kernels.linux_latest;
 
   networking = {
     hostName = "mizu";
