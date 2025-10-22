@@ -41,19 +41,12 @@ in {
     vlc
     nautilus
     lazygit
-    (prismlauncher.override {
-      jdks = [
-        graalvm-ce
-        jdk21
-      ];
-    })
     gimp
-    davinci-resolve
-    lunar-client
     slack
     devenv
     thunderbird
     wootility
+    kubectl
   ];
 
   home.stateVersion = "25.05";
