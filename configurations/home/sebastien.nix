@@ -47,6 +47,7 @@ in {
     thunderbird
     wootility
     kubectl
+    kubernetes-helm
   ];
 
   home.stateVersion = "25.05";

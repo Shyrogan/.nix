@@ -44,6 +44,7 @@ in {
         css.enable = true;
         html.enable = true;
         tailwind.enable = true;
+        helm.enable = true;
       };
       telescope = {
         enable = true;
