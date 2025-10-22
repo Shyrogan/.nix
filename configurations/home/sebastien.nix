@@ -1,9 +1,11 @@
-{ flake, pkgs, ... }:
-let
+{
+  flake,
+  pkgs,
+  ...
+}: let
   inherit (flake) inputs;
   inherit (inputs) self zen-browser;
-in
-{
+in {
   imports = [
     self.homeModules.default
   ];
@@ -27,6 +29,7 @@ in
     walker.enable = true;
     tmux.enable = true;
     opencode.enable = true;
+    helium.enable = true;
   };
   services = {
     hyprpaper.enable = true;
