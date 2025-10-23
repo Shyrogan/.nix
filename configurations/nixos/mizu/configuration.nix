@@ -72,6 +72,7 @@ in {
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     shell = pkgs.nushell;
   };
@@ -83,6 +84,13 @@ in {
     pkgs.ifuse
     pkgs.overskride
   ];
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
   # This is disabled due to it blocking boot
   systemd.services = {
