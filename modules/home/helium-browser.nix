@@ -22,7 +22,7 @@ in {
         ls -la ${content}
         install -m 444 -D ${content}/helium.desktop -t $out/share/applications
         substituteInPlace $out/share/applications/helium.desktop \
-          --replace-fail 'Exec=AppRun' 'Exec=helium'
+          --replace-fail 'Exec=AppRun' 'Exec=helium-browser'
         cp -r ${content}/usr/share/icons $out/share
       '';
       meta = {
