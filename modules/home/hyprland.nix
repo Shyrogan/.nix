@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  hyprshotConfig = config.programs.hyprshot;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  hyprshotConfig = config.programs.hyprshot;
+in {
   wayland.windowManager.hyprland = {
     settings = {
       "$mod" = "SUPER";
@@ -33,50 +35,48 @@ in
         preserve_split = "yes";
       };
 
-      bind =
-        let
-          keys = [
-            "ampersand"
-            "eacute"
-            "quotedbl"
-            "apostrophe"
-            "parenleft"
-            "minus"
-            "egrave"
-            "underscore"
-            "ccedilla"
-            "agrave"
-          ];
-          mkWorkspace = n: key: "$mod, ${key}, workspace, ${toString n}";
-          mkMoveToWorkspace = n: key: "SHIFT+$mod, ${key}, movetoworkspace, ${toString n}";
-          workspaces = builtins.map (n: mkWorkspace n (builtins.elemAt keys (n - 1))) (
-            builtins.genList (n: n + 1) 10
-          );
-          workspaceMovements = builtins.map (n: mkMoveToWorkspace n (builtins.elemAt keys (n - 1))) (
-            builtins.genList (n: n + 1) 10
-          );
-          focusKeys = [
-            "h"
-            "j"
-            "k"
-            "l"
-          ];
-          directions = [
-            "l"
-            "d"
-            "u"
-            "r"
-          ];
-          focusMovements = builtins.map (
-            i: "$mod, ${builtins.elemAt focusKeys i}, movefocus, ${builtins.elemAt directions i}"
-          ) (builtins.genList (n: n) 4);
-          resizeMovements = builtins.map (
-            i:
-            "SHIFT+$mod, ${builtins.elemAt focusKeys i}, resizeactive, ${
-              builtins.elemAt [ "-20 0" "0 20" "0 -20" "20 0" ] i
-            }"
-          ) (builtins.genList (n: n) 4);
-        in
+      bind = let
+        keys = [
+          "ampersand"
+          "eacute"
+          "quotedbl"
+          "apostrophe"
+          "parenleft"
+          "minus"
+          "egrave"
+          "underscore"
+          "ccedilla"
+          "agrave"
+        ];
+        mkWorkspace = n: key: "$mod, ${key}, workspace, ${toString n}";
+        mkMoveToWorkspace = n: key: "SHIFT+$mod, ${key}, movetoworkspace, ${toString n}";
+        workspaces = builtins.map (n: mkWorkspace n (builtins.elemAt keys (n - 1))) (
+          builtins.genList (n: n + 1) 10
+        );
+        workspaceMovements = builtins.map (n: mkMoveToWorkspace n (builtins.elemAt keys (n - 1))) (
+          builtins.genList (n: n + 1) 10
+        );
+        focusKeys = [
+          "h"
+          "j"
+          "k"
+          "l"
+        ];
+        directions = [
+          "l"
+          "d"
+          "u"
+          "r"
+        ];
+        focusMovements = builtins.map (
+          i: "$mod, ${builtins.elemAt focusKeys i}, movefocus, ${builtins.elemAt directions i}"
+        ) (builtins.genList (n: n) 4);
+        resizeMovements = builtins.map (
+          i: "SHIFT+$mod, ${builtins.elemAt focusKeys i}, resizeactive, ${
+            builtins.elemAt ["-20 0" "0 20" "0 -20" "20 0"] i
+          }"
+        ) (builtins.genList (n: n) 4);
+      in
         workspaces
         ++ workspaceMovements
         ++ focusMovements
@@ -128,7 +128,7 @@ in
       };
 
       animations = {
-        enabled = "yes";
+        enabled = "false";
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
         animation = [
           "windows, 1, 1, myBezier"
