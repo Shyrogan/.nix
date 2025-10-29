@@ -1,9 +1,7 @@
-{ flake, ... }:
-let
+{flake, ...}: let
   inherit (flake) inputs;
   inherit (inputs) determinate;
-in
-{
+in {
   imports = [
     determinate.nixosModules.default
   ];
@@ -18,7 +16,8 @@ in
     };
     settings = {
       auto-optimise-store = true;
-      allowed-users = [ "sebastien" ];
+      allowed-users = ["sebastien"];
+      trusted-users = ["root" "sebastien"];
 
       # For speeding up
       experimental-features = [
