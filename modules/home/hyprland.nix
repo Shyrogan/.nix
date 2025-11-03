@@ -1,11 +1,16 @@
 {
   config,
   lib,
+  flake,
+  pkgs,
   ...
 }: let
   hyprshotConfig = config.programs.hyprshot;
+  inherit (flake.inputs) hyprland swts;
 in {
   wayland.windowManager.hyprland = {
+    package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     settings = {
       "$mod" = "SUPER";
 
@@ -152,10 +157,19 @@ in {
           sensitivity = -0.5;
         }
       ];
+
+      exec-once = [
+        "swts"
+      ];
     };
   };
 
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = 1;
+  home = {
+    packages = [
+      swts.packages.${pkgs.system}.default
+    ];
+    sessionVariables = {
+      NIXOS_OZONE_WL = 1;
+    };
   };
 }

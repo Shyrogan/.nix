@@ -1,8 +1,6 @@
-{ flake, ... }:
-let
+{flake, ...}: let
   inherit (flake.inputs) walker;
-in
-{
+in {
   imports = [
     walker.homeManagerModules.default
   ];
