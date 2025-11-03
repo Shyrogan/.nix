@@ -29,14 +29,12 @@ in {
     walker.enable = true;
     tmux.enable = true;
     opencode.enable = true;
-    helium.enable = true;
   };
   services = {
     hyprpaper.enable = true;
   };
   wayland.windowManager.hyprland.enable = true;
   home.packages = with pkgs; [
-    zen-browser.packages.${system}.default
     pavucontrol
     vlc
     nautilus
@@ -48,6 +46,9 @@ in {
     wootility
     kubectl
     kubernetes-helm
+    brave
+    inter
+    watchexec
   ];
 
   home.stateVersion = "25.05";

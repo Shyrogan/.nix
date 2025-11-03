@@ -13,8 +13,11 @@
 
     stylix.url = "github:nix-community/stylix";
 
-    zen-browser.url = "github:youwen5/zen-browser-flake";
-    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     nvf.url = "github:Shyrogan/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +27,8 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     walker.url = "github:abenz1267/walker";
+
+    swts.url = "github:Shyrogan/swts";
   };
 
   outputs = inputs:
