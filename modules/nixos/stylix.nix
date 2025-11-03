@@ -1,8 +1,10 @@
-{ flake, pkgs, ... }:
-let
-  inherit (flake.inputs) stylix;
-in
 {
+  flake,
+  pkgs,
+  ...
+}: let
+  inherit (flake.inputs) stylix;
+in {
   imports = [
     stylix.nixosModules.stylix
   ];
@@ -10,11 +12,11 @@ in
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    image = ../../assets/wallpapers/vangogh.jpg;
+    image = ../../assets/wallpapers/wind-rises.png;
     fonts = {
       monospace = {
-        name = "JetBrainsMono Nerd Font";
-        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "GeistMono Nerd Font";
+        package = pkgs.nerd-fonts.geist-mono;
       };
     };
     cursor = {

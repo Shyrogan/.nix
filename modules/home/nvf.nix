@@ -25,7 +25,7 @@ in {
         indent.enable = true;
 
         grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-          typescript # in language settings only tsx gets enabled, not typescript
+          typescript
         ];
       };
       languages = {
@@ -45,6 +45,7 @@ in {
         html.enable = true;
         tailwind.enable = true;
         helm.enable = true;
+        qml.enable = true;
       };
       telescope = {
         enable = true;

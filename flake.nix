@@ -16,7 +16,7 @@
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
-    nvf.url = "github:NotAShelf/nvf";
+    nvf.url = "github:Shyrogan/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     fff.url = "github:dmtrKovalenko/fff.nvim";
     fff.inputs.nixpkgs.follows = "nixpkgs";

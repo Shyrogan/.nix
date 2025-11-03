@@ -12,6 +12,8 @@ in {
       general = {
         layout = "dwindle";
         resize_on_border = true;
+
+        gaps_out = "37,20,20,20";
       };
 
       xwayland = {
