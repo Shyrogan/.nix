@@ -29,6 +29,8 @@
     walker.url = "github:abenz1267/walker";
 
     swts.url = "github:Shyrogan/swts";
+
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs = inputs:
