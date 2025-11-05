@@ -6,11 +6,15 @@
   ...
 }: let
   hyprshotConfig = config.programs.hyprshot;
-  inherit (flake.inputs) hyprland swts;
+  inherit (flake.inputs) hyprland hyprland-plugins swts;
 in {
   wayland.windowManager.hyprland = {
     package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    plugins = [
+      hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.borders-plus-plus
+    ];
     settings = {
       "$mod" = "SUPER";
 
@@ -19,6 +23,7 @@ in {
         resize_on_border = true;
 
         gaps_out = "37,20,20,20";
+        border_size = 0;
       };
 
       xwayland = {
@@ -102,6 +107,9 @@ in {
           "SHIFT+$mod, S, exec, hyprshot -m region --clipboard-only"
           "$mod, Print, exec, hyprshot -m window --clipboard-only"
           ", Print, exec, hyprshot -m monitor --clipboard-only"
+        ]
+        ++ [
+          "$mod, f12, hyprexpo:expo, toggle"
         ];
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -115,11 +123,6 @@ in {
       ];
       decoration = {
         rounding = 12;
-        shadow = {
-          range = 11;
-          render_power = 0;
-        };
-
         dim_inactive = false;
 
         blur = {
@@ -157,6 +160,18 @@ in {
           sensitivity = -0.5;
         }
       ];
+
+      plugin = {
+        borders-plus-plus = {
+          add_borders = 2;
+          "col.border_1" = "rgb(52525c)";
+          "col.border_2" = "rgb(09090b)";
+          border_size_1 = 2;
+          border_size_2 = 2;
+
+          natural_rounding = true;
+        };
+      };
 
       exec-once = [
         "swts"

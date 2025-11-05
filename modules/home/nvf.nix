@@ -46,6 +46,7 @@ in {
         tailwind.enable = true;
         helm.enable = true;
         qml.enable = true;
+        svelte.enable = true;
       };
       telescope = {
         enable = true;
@@ -99,7 +100,7 @@ in {
               __inherited_from = "openai";
               endpoint = "https://openrouter.ai/api/v1";
               api_key_name = "OPENROUTER_API_KEY";
-              model = "anthropic/claude-sonnet-4.5";
+              model = "qwen/qwen3-coder";
               timeout = 30000;
             };
           };

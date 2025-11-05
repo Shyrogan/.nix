@@ -11,7 +11,7 @@ in {
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    base16Scheme = ../../assets/vangogh-material-hard.yaml;
     image = ../../assets/wallpapers/wind-rises.png;
     fonts = {
       monospace = {

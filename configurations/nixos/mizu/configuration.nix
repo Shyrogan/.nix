@@ -63,6 +63,7 @@ in {
     openssh.enable = true;
     usbmuxd.enable = true;
     tlp.enable = true;
+    gvfs.enable = true;
   };
   security.rtkit.enable = true;
 
