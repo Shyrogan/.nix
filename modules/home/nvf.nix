@@ -41,6 +41,7 @@ in {
           extensions.ts-error-translator.enable = true;
         };
         python.enable = true;
+        python.format.type = "ruff";
         css.enable = true;
         html.enable = true;
         tailwind.enable = true;
