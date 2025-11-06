@@ -13,7 +13,6 @@ in {
     portalPackage = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     plugins = [
       hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
-      hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.borders-plus-plus
     ];
     settings = {
       "$mod" = "SUPER";
@@ -80,12 +79,13 @@ in {
           "u"
           "r"
         ];
-        focusMovements = builtins.map (
-          i: "$mod, ${builtins.elemAt focusKeys i}, movefocus, ${builtins.elemAt directions i}"
-        ) (builtins.genList (n: n) 4);
+        focusMovements = builtins.concatLists (builtins.map (i: [
+          "$mod, ${builtins.elemAt focusKeys i}, movefocus, ${builtins.elemAt directions i}"
+          "SHIFT+$mod, ${builtins.elemAt focusKeys i}, movewindow, ${builtins.elemAt directions i}"
+        ]) (builtins.genList (n: n) 4));
         resizeMovements = builtins.map (
-          i: "SHIFT+$mod, ${builtins.elemAt focusKeys i}, resizeactive, ${
-            builtins.elemAt ["-20 0" "0 20" "0 -20" "20 0"] i
+          i: "Control_L+$mod, ${builtins.elemAt focusKeys i}, resizeactive, ${
+            builtins.elemAt ["-50 0" "0 50" "0 -50" "50 0"] i
           }"
         ) (builtins.genList (n: n) 4);
       in
@@ -102,19 +102,18 @@ in {
           "$mod, v, togglefloating"
 
           "SHIFT+ALT+$mod, q, exit"
+
+          "$mod, f12, hyprexpo:expo, toggle"
         ]
         ++ lib.optionals hyprshotConfig.enable [
           "SHIFT+$mod, S, exec, hyprshot -m region --clipboard-only"
           "$mod, Print, exec, hyprshot -m window --clipboard-only"
           ", Print, exec, hyprshot -m monitor --clipboard-only"
-        ]
-        ++ [
-          "$mod, f12, hyprexpo:expo, toggle"
         ];
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
-        "$mod, Control_L, movewindow"
+        "SHIFT+$mod, Control_L, movewindow"
         "$mod, ALT_L, resizewindow"
       ];
 
@@ -122,13 +121,13 @@ in {
         ", switch:lid:on, exec, systemctl hibernate"
       ];
       decoration = {
-        rounding = 12;
+        rounding = 4;
         dim_inactive = false;
 
         blur = {
           enabled = true;
-          size = 8;
-          passes = 3;
+          size = 3;
+          passes = 4;
           new_optimizations = "on";
           noise = 0.01;
           contrast = 0.9;
@@ -160,18 +159,6 @@ in {
           sensitivity = -0.5;
         }
       ];
-
-      plugin = {
-        borders-plus-plus = {
-          add_borders = 2;
-          "col.border_1" = "rgb(52525c)";
-          "col.border_2" = "rgb(09090b)";
-          border_size_1 = 2;
-          border_size_2 = 2;
-
-          natural_rounding = true;
-        };
-      };
 
       exec-once = [
         "swts"
