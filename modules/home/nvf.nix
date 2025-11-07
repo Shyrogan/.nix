@@ -48,6 +48,7 @@ in {
         helm.enable = true;
         qml.enable = true;
         svelte.enable = true;
+        rust.enable = true;
       };
       telescope = {
         enable = true;
