@@ -1366,11 +1366,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1762188368,
-        "narHash": "sha256-8QwCb1B3LjDae5tc/6O3Km+0UWIW8efSCV7X5Z3bLNQ=",
+        "lastModified": 1762527399,
+        "narHash": "sha256-AxiZjguIilrxm2UV4CHfyE2pdW7Zog/VeMyREDe1HW4=",
         "owner": "Shyrogan",
         "repo": "swts",
-        "rev": "fffa79831cb4e8ac47283f3ace3fed28baee6741",
+        "rev": "33691ccf569ef4d0c6f6c3aac71ecee6727c8014",
         "type": "github"
       },
       "original": {
