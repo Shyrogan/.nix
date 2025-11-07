@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.tmux = {
     terminal = "screen-256color";
     historyLimit = 100000;
@@ -12,8 +14,11 @@
       # Set escape time to 0 for immediate escape key response
       set-option -g escape-time 0
 
-      # Set status bar position to bottom
-      set-option -g status-position bottom
+      set-option -g default-terminal 'screen-256color'
+      set-option -g terminal-overrides ',xterm-256color:RGB'
+
+      # Set status bar position to top
+      set-option -g status-position top
 
       # Status bar styling with bubble decorations using Stylix colors
       set-option -g status-style "bg=default,fg=#${config.lib.stylix.colors.base05}"
