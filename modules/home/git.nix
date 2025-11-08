@@ -9,8 +9,10 @@
     git = {
       enable = true;
       settings = {
-        inherit (config.me) email;
-        name = config.me.fullname;
+        user = {
+          inherit (config.me) email;
+          name = config.me.fullname;
+        };
       };
 
       ignores = ["*~" "*.swp"];
