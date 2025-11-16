@@ -162,6 +162,7 @@ in {
 
       exec-once = [
         "swts"
+        "~/.local/bin/hyprland-event-handler.sh"
       ];
     };
   };
@@ -169,6 +170,7 @@ in {
   home = {
     packages = [
       swts.packages.${pkgs.system}.default
+      pkgs.socat
     ];
     sessionVariables = {
       NIXOS_OZONE_WL = 1;
