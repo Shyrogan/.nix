@@ -162,7 +162,7 @@ in {
 
       exec-once = [
         "swts"
-        "~/.local/bin/hyprland-event-handler.sh"
+        "sh ${../../assets/scripts/hyprland-event-handler.sh}"
       ];
     };
   };
