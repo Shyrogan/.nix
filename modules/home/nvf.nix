@@ -44,9 +44,17 @@ in {
         python.format.type = "ruff";
         css.enable = true;
         html.enable = true;
-        tailwind.enable = true;
+        tailwind = {
+          enable = true;
+          lsp.opts = ''
+            experimental = {
+              classRegex = {
+                { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]+)[\"'`]" },
+              },
+            },
+          '';
+        };
         helm.enable = true;
-        qml.enable = true;
         svelte.enable = true;
         rust = {
           enable = true;

@@ -1260,11 +1260,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1762121337,
-        "narHash": "sha256-1Qo8aS8rdADUsAwpJXJTFseAoS3oCk/xkhZQQEAR6vE=",
+        "lastModified": 1763851452,
+        "narHash": "sha256-clhIKND/0f8gcMYp5VcLvvrEOtlzXbYRXnLpKR40f8Q=",
         "owner": "Shyrogan",
         "repo": "nvf",
-        "rev": "a6d7b334dfa481ebe1abafb857e1a438dc19a4cb",
+        "rev": "038a010189c7390228aaaa65491b594d0d05ff5e",
         "type": "github"
       },
       "original": {
