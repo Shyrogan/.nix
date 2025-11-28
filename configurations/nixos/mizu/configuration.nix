@@ -24,7 +24,7 @@ in {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  boot.kernelPackages = pkgs.linuxKernel.packagesFor pkgs-kernel.linuxKernel.kernels.linux_latest;
+  boot.kernelPackages = pkgs.linuxKernel.packagesFor pkgs.linuxKernel.kernels.linux_zen;
 
   networking = {
     hostName = "mizu";

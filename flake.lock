@@ -1033,22 +1033,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-linux-kernel": {
-      "locked": {
-        "lastModified": 1753549186,
-        "narHash": "sha256-Znl7rzuxKg/Mdm6AhimcKynM7V3YeNDIcLjBuoBcmNs=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "17f6bd177404d6d43017595c5264756764444ab8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "17f6bd177404d6d43017595c5264756764444ab8",
-        "type": "github"
-      }
-    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -1307,7 +1291,6 @@
         "hyprland-plugins": "hyprland-plugins",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs_5",
-        "nixpkgs-linux-kernel": "nixpkgs-linux-kernel",
         "nur": "nur",
         "nvf": "nvf",
         "spicetify-nix": "spicetify-nix",
