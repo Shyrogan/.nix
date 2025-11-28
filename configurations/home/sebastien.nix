@@ -49,6 +49,8 @@ in {
     brave
     inter
     watchexec
+    prismlauncher
+    jetbrains.datagrip
   ];
 
   home.stateVersion = "25.05";
