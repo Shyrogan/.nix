@@ -2,10 +2,7 @@
   flake,
   pkgs,
   ...
-}: let
-  inherit (flake.inputs) nixpkgs-linux-kernel;
-  pkgs-kernel = nixpkgs-linux-kernel.legacyPackages.${pkgs.system};
-in {
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -47,6 +44,7 @@ in {
   };
   console.keyMap = "fr";
 
+  powerManagement.powertop.enable = true;
   services = {
     printing.enable = true;
     pulseaudio.enable = false;
@@ -62,7 +60,27 @@ in {
     };
     openssh.enable = true;
     usbmuxd.enable = true;
-    tlp.enable = true;
+    upower.enable = true;
+    power-profiles-daemon.enable = false;
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_BOOST_ON_AC = 1;
+        CPU_BOOST_ON_BAT = 1;
+        CPU_HWP_DYN_BOOST_ON_AC = 1;
+        CPU_HWP_DYN_BOOST_ON_BAT = 1;
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+        PLATFORM_PROFILE_ON_AC = "performance";
+        PLATFORM_PROFILE_ON_BAT = "balanced";
+        START_CHARGE_THRESH_BAT0 = 75;
+        STOP_CHARGE_THRESH_BAT0 = 81;
+
+        USB_DENYLIST = "31e3:1402 258a:2035";
+      };
+    };
     gvfs.enable = true;
   };
   security.rtkit.enable = true;
@@ -77,10 +95,11 @@ in {
     ];
     shell = pkgs.nushell;
   };
-
-  programs.git.enable = true;
-  programs.steam.enable = true;
-  programs.hyprland.enable = true;
+  programs = {
+    git.enable = true;
+    steam.enable = true;
+    hyprland.enable = true;
+  };
   environment.systemPackages = [
     pkgs.ifuse
     pkgs.overskride
