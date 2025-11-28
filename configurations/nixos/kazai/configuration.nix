@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -60,9 +59,9 @@
   programs.git.enable = true;
   programs.steam.enable = true;
   programs.hyprland.enable = true;
-  environment.systemPackages = [ pkgs.ifuse ];
+  environment.systemPackages = [pkgs.ifuse];
 
   nixpkgs.config.allowUnfree = true;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
 }
