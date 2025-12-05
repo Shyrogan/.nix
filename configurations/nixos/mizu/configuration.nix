@@ -62,27 +62,7 @@
     openssh.enable = true;
     usbmuxd.enable = true;
     upower.enable = true;
-    power-profiles-daemon.enable = false;
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_BOOST_ON_AC = 1;
-        CPU_BOOST_ON_BAT = 1;
-        CPU_HWP_DYN_BOOST_ON_AC = 1;
-        CPU_HWP_DYN_BOOST_ON_BAT = 1;
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
-        PLATFORM_PROFILE_ON_AC = "performance";
-        PLATFORM_PROFILE_ON_BAT = "balanced";
-        START_CHARGE_THRESH_BAT0 = 75;
-        STOP_CHARGE_THRESH_BAT0 = 80;
-
-        USB_AUTOSUSPEND = 0;
-        USB_EXCLUDE_HID = 1;
-      };
-    };
+    power-profiles-daemon.enable = true;
     gvfs.enable = true;
   };
   security.rtkit.enable = true;
@@ -94,6 +74,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "fuse"
     ];
     shell = pkgs.nushell;
   };
@@ -101,6 +82,10 @@
     git.enable = true;
     steam.enable = true;
     hyprland.enable = true;
+    fuse = {
+      enable = true;
+      userAllowOther = true;
+    };
   };
   environment.systemPackages = [
     pkgs.ifuse
