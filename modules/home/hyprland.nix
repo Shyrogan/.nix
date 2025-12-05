@@ -118,7 +118,9 @@ in {
       ];
 
       bindl = [
-        ", switch:lid:on, exec, systemctl hibernate"
+        '', switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1,disable"''
+        '', switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1,2880x1800@120,1.5"''
+        '', switch:off:Lid Switch, exec, hyprctl keyword monitor "HDMI-A-1,2560x1440@99.94600,auto-right,auto"''
       ];
       decoration = {
         rounding = 4;
@@ -150,7 +152,7 @@ in {
 
       monitor = [
         "eDP-1,2880x1800@120,0x0,1.5"
-        "HDMI-A-1,2560x1440@99.94600,auto-left,auto"
+        "HDMI-A-1,2560x1440@99.94600,auto-right,auto"
       ];
 
       device = [
