@@ -51,6 +51,8 @@ in {
     watchexec
     prismlauncher
     jetbrains.datagrip
+    bambu-studio
+    sshfs
   ];
 
   home.stateVersion = "26.05";
