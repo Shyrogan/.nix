@@ -106,9 +106,9 @@ in {
           "$mod, f12, hyprexpo:expo, toggle"
         ]
         ++ lib.optionals hyprshotConfig.enable [
-          "SHIFT+$mod, S, exec, hyprshot -m region --clipboard-only"
-          "$mod, Print, exec, hyprshot -m window --clipboard-only"
-          ", Print, exec, hyprshot -m monitor --clipboard-only"
+          "SHIFT+$mod, S, exec, hyprshot --freeze -m region --clipboard-only"
+          "$mod, Print, exec, hyprshot --freeze -m window --clipboard-only"
+          ", Print, exec, hyprshot --freeze -m monitor --clipboard-only"
         ];
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -119,7 +119,7 @@ in {
 
       bindl = [
         '', switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1,disable"''
-        '', switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1,2880x1800@120,1.5"''
+        '', switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1,2880x1800@120,0x0,1.5"''
         '', switch:off:Lid Switch, exec, hyprctl keyword monitor "HDMI-A-1,2560x1440@99.94600,auto-right,auto"''
       ];
       decoration = {
